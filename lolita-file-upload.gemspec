@@ -24,7 +24,8 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "lib/lolita-file-upload.rb"
+    "lib/lolita-file-upload.rb",
+    "lolita-file-upload.gemspec"
   ]
   s.homepage = %q{http://github.com/ithouse/lolita-file-upload}
   s.licenses = ["MIT"]
