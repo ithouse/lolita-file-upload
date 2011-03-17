@@ -1,3 +1,7 @@
+.project
+.settings
+coverage.data
+test_orm/log
 # rcov generated
 coverage
 
