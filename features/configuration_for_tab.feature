@@ -8,19 +8,18 @@ Scenario: i am able to define new tab with type :file and set allowed file types
   Given a lolita and lolita-file-upload
   When I define a file tab for post
   Then I can set included extension type pdf
-  And I can set excluded extension type php
   
 Scenario: set maximum file upload size 
   Given a lolita
   And lolita-file-upload
-  And file tab
+  And file tab for post
   When I set maximum file upload size to 1024
-  Then I cannot upload file larg_file
+  Then I cannot upload file larg_file.txt
   
 Scenario: set assciation with Lolita::Multimedia::File
   Given a lolita 
   And lolita-file-upload
-  When I define a file tab
-  Then lolita orm class has association with Lolita::Multimedia::File
-  And association name is :files
+  When I define a file tab for post
+  Then Post has association with Lolita::Multimedia::File
+  And association name for Post is :files
   

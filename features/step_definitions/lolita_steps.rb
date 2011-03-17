@@ -2,7 +2,7 @@ Given /^a lolita$/ do
   
 end
 
-When /^I load lolita\-file\-upload gem$/ do
+When /^I load lolita\-file\-upload$/ do
   
 end
 
@@ -24,9 +24,7 @@ Given /^a lolita and lolita\-file\-upload$/ do
 end
 
 When /^I define a file tab for (\w+)$/ do |model_name|
-  model=Object.const_get(:"#{model_name.humanize}")
-  @file_tab=Lolita::Configuration::Tab.new(model.lolita.dbi,:files)
-  model.lolita.tabs<<@file_tab
+  @file_tab=Support.file_tab(model_name)
 end
 
 Then /^I can set included extension type (\w+)$/ do |ext_name|
@@ -35,31 +33,30 @@ Then /^I can set included extension type (\w+)$/ do |ext_name|
 end
 
 Given /^lolita\-file\-upload$/ do
-  pending # express the regexp above with the code you wish you had
+ 
 end
 
-Given /^file tab$/ do
-  pending # express the regexp above with the code you wish you had
+Given /^file tab for (\w+)$/ do |model_name|
+  @file_tab=Support.file_tab(model_name)
 end
 
-When /^I set maximum file upload size to (\d+)$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+When /^I set maximum file upload size to (\d+)$/ do |size|
+  @file_tab.maxsize(size)
 end
 
-Then /^I cannot upload file larg_file$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^I cannot upload file (\w+\.\w+)$/ do |file_name|
+  file=Lolita::Multimedia::File.create(:asset=>File.read(file_name))
+  file.errors[:asset].should_not be_nil
 end
 
-Then /^lolita orm class has association with Lolita::Multimedia::File$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^(\w+)\s+has association with ([\w:]+)$/ do |model_name,klass|
+  model=Support.get_model(model_name)
+  model.lolita.dbi.association_klass_names.should include(klass)
 end
 
-Then /^association name is :files$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Given /^lolita$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^association name for (\w+)\sis (:\w+)$/ do |model_name,assoc_name|
+  model=Support.get_model(model_name)
+  model.lolita.dbi.reflect_on_association(assoc_name).should_not be_nil
 end
 
 When /^I upload file normal_file$/ do
