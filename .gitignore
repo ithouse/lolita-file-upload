@@ -1,3 +1,5 @@
+gemfile.lock
+uploads
 .project
 .settings
 coverage.data

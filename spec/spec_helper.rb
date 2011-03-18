@@ -1,6 +1,6 @@
 require 'rubygems'
 
-require 'test_orm/coverage'
+require File.expand_path('test_orm/coverage')
 #require "rails_app/config/environment"
 require 'ffaker'
 require 'factory_girl'

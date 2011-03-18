@@ -33,7 +33,13 @@ Then /^I can set included extension type (\w+)$/ do |ext_name|
 end
 
 Given /^lolita\-file\-upload$/ do
- 
+  
+end
+
+Given /^rails engine$/ do
+  Dir[File.expand_path("app/**/*.rb")].each do |path|
+    require path
+  end
 end
 
 Given /^file tab for (\w+)$/ do |model_name|
@@ -44,14 +50,18 @@ When /^I set maximum file upload size to (\d+)$/ do |size|
   @file_tab.maxsize(size)
 end
 
-Then /^I cannot upload file (\w+\.\w+)$/ do |file_name|
-  file=Lolita::Multimedia::File.create(:asset=>File.read(file_name))
-  file.errors[:asset].should_not be_nil
+Then /^I (c\w+)\supload file (\w+\.\w+)$/ do |predicate,file_name|
+  file=Lolita::Multimedia::File.create(:asset=>Support.get_file(file_name))
+  if predicate=="can"
+    file.errors.should be_empty
+  elsif predicate=="cannot"
+    file.errors[:asset].should_not be_nil
+  end
 end
 
 Then /^(\w+)\s+has association with ([\w:]+)$/ do |model_name,klass|
   model=Support.get_model(model_name)
-  model.lolita.dbi.association_klass_names.should include(klass)
+  model.lolita.dbi.associations_klass_names.should include(klass)
 end
 
 Then /^association name for (\w+)\sis (:\w+)$/ do |model_name,assoc_name|

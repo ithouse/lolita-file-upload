@@ -1,9 +1,10 @@
 require File.expand_path('../../../lolita/lib/lolita',__FILE__) # TODO remove this 
 
-$:<<File.dirname(__FILE__)
+$:<<File.dirname(__FILE__) unless $:.include?(File.dirname(__FILE__))
  
 require "lolita-file-upload/module"
 module Lolita
+
   module FileUpload
   	
   end

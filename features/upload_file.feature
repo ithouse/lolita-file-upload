@@ -4,9 +4,9 @@ Files in lolita have name attribute. Any attributes can be changed after file is
 File always is related with some ORM class object.
 
 Scenario: upload file
-  Given lolita
+  Given a lolita
   And lolita-file-upload
-  When I upload file normal_file
+  When I can upload file normal_file.txt
   Then I see normal_file
   And I change file attribute name to my_file
   And save file

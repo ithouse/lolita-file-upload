@@ -2,7 +2,7 @@ module Lolita
   module Configuration
   	class FileTab < Lolita::Configuration::Tab
   	
-	  	lolita_accessor :extensions
+	  	lolita_accessor :extensions,:maxsize
 
 	  	def initialize(dbi,*args,&block)
         @type=:file
