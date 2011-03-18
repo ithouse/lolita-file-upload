@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Lolita::Configuration::FileTab do
 
@@ -28,10 +28,10 @@ describe Lolita::Configuration::FileTab do
 
   describe "maximum file size" do
     it "should be changable" do
-      tab.maxsize=2048
-      tab.maxsize.should == 2048
-      tab.maxsize(1024)
-      tab.maxsize.should == 1024
+      tab.maxfilesize=2048
+      tab.maxfilesize.should == 2048
+      tab.maxfilesize(1024)
+      tab.maxfilesize.should == 1024
     end
   end 
 end

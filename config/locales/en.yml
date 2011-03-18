@@ -1,0 +1,16 @@
+en:
+  lolita:
+    support:
+      bytes:
+        byte:
+          one: byte
+          other: bytes
+        kilobyte:
+          one: kilobyte
+          other: kilobytes
+        megabyte:
+          one: megabyte
+          other: megabytes
+        gigabyte:
+          one: gigabyte
+          other: gigabytes

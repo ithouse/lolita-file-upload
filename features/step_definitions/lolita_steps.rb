@@ -47,7 +47,7 @@ Given /^file tab for (\w+)$/ do |model_name|
 end
 
 When /^I set maximum file upload size to (\d+)$/ do |size|
-  @file_tab.maxsize(size)
+  @file_tab.maxfilesize(size)
 end
 
 Then /^I (c\w+)\supload file (\w+\.\w+)$/ do |predicate,file_name|
@@ -92,4 +92,17 @@ end
 
 Then /^I have (get|post|delete|put) route (.+)$/ do |method,url|
   pending # express the regexp above with the code you wish you had
+end
+
+Given /^multimedia file object$/ do
+  @multimedia_file=Lolita::Multimedia::File.new
+end
+
+When /^I humanize "([^"]*)"$/ do |size|
+  @humanized_size=@multimedia_file.humanize_size(eval(size))
+end
+
+Then /^I should get "([^"]*)" and "([^"]*)"$/ do |unit, limit|
+  @humanized_size[:unit].should == unit
+  @humanized_size[:limit].to_f.should == limit.to_f
 end
