@@ -1,19 +1,27 @@
-= lolita-file-upload
+= Lolita file upload
 
-Description goes here.
+File upload gem for Lolita.
 
-== Contributing to lolita-file-upload
- 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+==Instalation
+* gem install lolita-file-upload
+* include in gemfile like this:
+   gem "lolita-file-upload", ">=0.1.0"
+* cd your_project_path
+* rails g lolita_file_upload:install
 
-== Copyright
+Install will copy all assets and migrations to your project.
+If you update to newest version of gem, than run <i>rails g lolita_file_upload:assets</i>
 
-Copyright (c) 2011 Arturs Meisters. See LICENSE.txt for
-further details.
+==Configuration
+
+Gem will not used until any of lolita configuration blocks define tab with type :files. Like this
+   class Post
+      include Lolita::Configuration
+      has_many :files, :as=>:fileable, :class_name=>"Lolita::Upload::File"
+
+      lolita do
+        tab(:content)
+        tab(:files)
+      end
+   end
 
