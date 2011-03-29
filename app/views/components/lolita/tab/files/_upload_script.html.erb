@@ -1,17 +1,19 @@
-<% content_for :style do %>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/overcast/jquery-ui.css" type="text/css" />
-<link rel="stylesheet" href="/stylesheets/lolita/upload/jquery.ui.plupload.css" type="text/css" />
+
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/overcast/jquery-ui.css" type="text/css" />
+  <link rel="stylesheet" href="/stylesheets/lolita/upload/jquery.ui.plupload.css" type="text/css" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="/javascripts/lolita/upload/plupload.full.min.js"></script>
+  <script type="text/javascript" src="/javascripts/lolita/upload/jquery.ui.plupload.min.js"></script>
+<% unless I18n.locale.to_s.downcase=="en" %>
+  <script type="text/javascript" src="/javascripts/lolita/upload/I18n/<%=I18n.locale%>.js"></script>
 <% end %>
-<% content_for :script do %>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="/javascripts/lolita/upload/plupload.full.min.js"></script>
-<script type="text/javascript" src="/javascripts/lolita/upload/jquery.ui.plupload.min.js"></script>
-<script type="text/javascript" src="/javascripts/lolita/upload/ru.js"></script>
+
 <script type="text/javascript">  
  $(function(){  
   $("#<%=container%>").plupload({
     // General settings
-    runtimes : 'flash,html5',
+    runtimes : 'html5,flash',
     url : '<%=send(:"lolita_upload_#{tab.type}_path")%>',
     max_file_size : '10mb',
     chunk_size : '1mb',
@@ -31,8 +33,24 @@
     flash_swf_url : '/javascripts/lolita/upload/plupload.flash.swf',
     init:{
       FileUploaded:function(uploader, file, info){
-  
-          $("#file_list_for_<%=tab.type%>>tbody").append(info.response)
+        $("#file_list_for_<%=tab.type%>>tbody").append(info.response)
+
+        var ids="<%="#{resource_name}[#{tab.type.to_s.singularize}_ids][]"%>"
+        var existing_ids=[]
+        $("input.<%=tab.type%>-ids").each(function(){
+          existing_ids.push($(this).val())
+        })
+
+        var new_ids=[]
+        $("#file_list_for_<%=tab.type%> tr[data-<%=tab.type%>-id]").each(function(){
+          if($.inArray($(this).attr("data-<%=tab.type%>-id"),existing_ids)<0){
+            new_ids.push($(this).attr("data-<%=tab.type%>-id"))
+          }
+        })
+        for(var i in new_ids){
+          $("#<%=tab.type%>_form").append('<input type="hidden" class="<%=tab.type%>-ids" name="'+ids+'" value="'+new_ids[i]+'" />')
+        }
+
       }  
     },
     
@@ -40,4 +58,3 @@
 
  });  
 </script> 
-<% end %>

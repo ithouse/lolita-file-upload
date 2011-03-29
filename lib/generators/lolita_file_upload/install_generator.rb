@@ -7,8 +7,7 @@ module LolitaFileUpload
 
 
       def copy_assets
-        root= File.expand_path("../../../../",__FILE__)
-        copy_dir("public",:root=>root)
+        generate("lolita_file_upload:assets")
       end
 
       def copy_migration

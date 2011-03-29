@@ -12,7 +12,7 @@ module Lolita
 
       def create
         @file.asset = params[:file]  
-        @file.save!  
+        @file.save! 
         render_component :"lolita/tab/files",:row,:file=>@file, :tab=>@tab
       end
 
@@ -43,7 +43,8 @@ module Lolita
       end
 
       def set_tab
-        @tab=@file.fileable ? @file.fileable.lolita.tabs.by_type(:files) : nil
+        fileable_class=@file.fileable_type.constantize
+        @tab=fileable_class.lolita.tabs.by_type(:files)
       end
     end
   end
