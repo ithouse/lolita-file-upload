@@ -1,5 +1,5 @@
-require File.expand_path('../../../lolita/lib/lolita',__FILE__)  # TODO remove this 
-
+#TODO add exception if lolita not found, show exception and msg that user should install this gem
+# if files tab is defined, but there no tab for that, maybe check that through gem.
 $:<<File.dirname(__FILE__) unless $:.include?(File.dirname(__FILE__))
 
 I18n.load_path += Dir[File.expand_path("config/locales")+"/**/*.yml"]
