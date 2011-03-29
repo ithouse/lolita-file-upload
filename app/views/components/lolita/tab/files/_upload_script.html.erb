@@ -1,0 +1,43 @@
+<% content_for :style do %>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/overcast/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="/stylesheets/lolita/upload/jquery.ui.plupload.css" type="text/css" />
+<% end %>
+<% content_for :script do %>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/javascripts/lolita/upload/plupload.full.min.js"></script>
+<script type="text/javascript" src="/javascripts/lolita/upload/jquery.ui.plupload.min.js"></script>
+<script type="text/javascript" src="/javascripts/lolita/upload/ru.js"></script>
+<script type="text/javascript">  
+ $(function(){  
+  $("#<%=container%>").plupload({
+    // General settings
+    runtimes : 'flash,html5',
+    url : '<%=send(:"lolita_upload_#{tab.type}_path")%>',
+    max_file_size : '10mb',
+    chunk_size : '1mb',
+    unique_names : true,
+    rename: true,
+    multipart: true,
+    multipart_params: {  
+      "authenticity_token" : '<%= form_authenticity_token %>',
+      "<%="upload[#{tab.association.name.to_s.singularize}able_type]"%>": "<%=resource.class%>",
+      "<%="upload[#{tab.association.name.to_s.singularize}able_id]"%>": "<%=resource.new_record? ? 0 : resource.id%>"
+    },
+    headers:{
+        "X-CSRF-Token": $("meta[name='csrf-token']").attr("content")
+    },
+
+    // Flash settings
+    flash_swf_url : '/javascripts/lolita/upload/plupload.flash.swf',
+    init:{
+      FileUploaded:function(uploader, file, info){
+  
+          $("#file_list_for_<%=tab.type%>>tbody").append(info.response)
+      }  
+    },
+    
+  });
+
+ });  
+</script> 
+<% end %>

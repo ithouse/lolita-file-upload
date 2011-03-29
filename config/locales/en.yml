@@ -1,5 +1,8 @@
 en:
   lolita:
+    upload:
+      errors:
+        "file too big": "file too big (max %{value} %{unit})"
     support:
       bytes:
         byte:

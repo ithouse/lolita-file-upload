@@ -38,14 +38,20 @@ module Lolita
         I18n.t("lolita.support.bytes.#{system_name}",:count=>count)
       end
 
-      def set_value
+      def set_value(val=nil)
+        operation_value=val ? val : self.bytes
         @@units.size.downto(1) do |pow|
-          if self.bytes>=1024**pow
+          if operation_value>=(1024**pow)
             @power=pow 
             break
           end
         end
-        (self.bytes.to_f/(1024**@power).to_f).round(2)
+        result= (operation_value.to_f/(1024**@power).to_f).round(2)
+        if val
+          result
+        else
+          set_value(result*1024**@power)
+        end
       end
 
     end

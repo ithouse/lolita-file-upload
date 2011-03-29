@@ -2,7 +2,7 @@ require 'cover_me'
 
 CoverMe.config do |c|
     # where is your project's root:
-    puts c.project.root 
+    "------"+c.project.root 
   
     # what files are you interested in coverage for:
     c.file_pattern # => /(#{CoverMe.config.project.root}\/app\/.+\.rb|#{CoverMe.config.project.root}\/lib\/.+\.rb)/i (default)

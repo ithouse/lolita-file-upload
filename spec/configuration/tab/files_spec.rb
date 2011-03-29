@@ -1,12 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
-describe Lolita::Configuration::FileTab do
+describe Lolita::Configuration::FilesTab do
 
   let(:dbi){Lolita::DBI::Base.new(Post)}
-  let(:tab){Lolita::Configuration::FileTab.new(dbi)}
+  let(:tab){Lolita::Configuration::FilesTab.new(dbi)}
 
   it "should create new file tab" do
-    Lolita::Configuration::FileTab.new(dbi).type.should == :file
+    Lolita::Configuration::FilesTab.new(dbi).type.should == :files
   end
 
   describe "extensions" do

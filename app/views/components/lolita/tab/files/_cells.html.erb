@@ -1,0 +1,5 @@
+<td><%=file.name || "-"%></td>
+<td>
+  <%=link_to "E",send(:"edit_lolita_upload_#{tab.type.to_s.singularize}_path",:id=>file.id),:remote=>true %>
+  <%= link_to "D",send(:"lolita_upload_#{tab.type.to_s.singularize}_path",:id=>file.id),:method=>:delete,:remote=>true,:confirm=>"Are you sure?" %>
+</td>

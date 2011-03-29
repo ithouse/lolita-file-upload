@@ -27,4 +27,10 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
       conv.unit.should == "gigabytes"
       conv.value.should == 1.01
     end
+
+    it "should take next unit when rounding move to next limit" do
+      conv=klass.new(1024**2-1)
+      conv.value.should == 1.0
+      conv.unit.should == "megabyte"
+    end
   end

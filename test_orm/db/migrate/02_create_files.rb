@@ -4,6 +4,9 @@ class CreateFiles < ActiveRecord::Migration
     def up
       create_table :lolita_files, :force=>true do |f|
         f.string :asset
+        f.string :name
+        f.string  :fileable_type
+        f.string  :fileable_id
       end
     end
 

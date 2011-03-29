@@ -6,11 +6,18 @@ module Support
     
     def file_tab model_name,*args,&block
       from=Support.get_model(model_name)
-      Lolita::Configuration::FileTab.new(from.lolita.dbi,*args,&block)
+      Lolita::Configuration::FilesTab.new(from.lolita.dbi,*args,&block)
     end
 
     def get_file(filename)
       File.open(File.expand_path("test_orm/files/"+filename.to_s))
+    end
+
+    def load_rails_application
+      require 'rails'
+      require 'lolita/rails/all'
+      require 'lolita-file-upload/rails'
+      require File.expand_path("test_orm/rails/config/enviroment")
     end
   end
 end

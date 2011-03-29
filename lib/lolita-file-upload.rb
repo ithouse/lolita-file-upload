@@ -1,19 +1,22 @@
-require File.expand_path('../../../lolita/lib/lolita',__FILE__) # TODO remove this 
+require File.expand_path('../../../lolita/lib/lolita',__FILE__)  # TODO remove this 
 
 $:<<File.dirname(__FILE__) unless $:.include?(File.dirname(__FILE__))
 
 I18n.load_path += Dir[File.expand_path("config/locales")+"/**/*.yml"]
-require "lolita-file-upload/module"
-module Lolita
 
+module Lolita
+  module FileUpload
+  end
   module Support
     autoload :Bytes, "support/bytes"
   end
   
   module Configuration
-  	autoload :FileTab, "lolita-file-upload/configuration/tab/file"
+  	autoload :FilesTab, "lolita-file-upload/configuration/tab/files"
   end
 end
+
+require 'lolita-file-upload/module'
 
 if defined?(Rails)
  require "lolita-file-upload/rails"

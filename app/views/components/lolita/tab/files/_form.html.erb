@@ -1,0 +1,3 @@
+<%= form_tag send(:"lolita_upload_#{tab.type.to_s.singularize}_path",:id=>file.id),:method=>:put,:remote=>true,:id=>"edit_#{tab.type}_#{file.id}" do %>
+    <%= text_field_tag "file[name]",file.name %>
+  <% end %>

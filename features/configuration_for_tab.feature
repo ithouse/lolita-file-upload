@@ -11,16 +11,16 @@ Scenario: i am able to define new tab with type :file and set allowed file types
   
 Scenario: set maximum file upload size 
   Given a lolita
-  And lolita-file-upload
-  And rails engine
+  And a rails
+  And rails application
   And file tab for post
   When I set maximum file upload size to 100000
   Then I cannot upload file large_file.txt
   
-Scenario: set assciation with Lolita::Multimedia::File
+Scenario: set assciation with Lolita::Upload::File
   Given a lolita 
   And lolita-file-upload
   When I define a file tab for post
-  Then Post has association with Lolita::Multimedia::File
+  Then Post has association with Lolita::Upload::File
   And association name for Post is :files
   

@@ -3,16 +3,21 @@ Given /^a lolita$/ do
 end
 
 When /^I load lolita\-file\-upload$/ do
-  
+  require "lolita-file-upload"
 end
 
 Then /^lolita should have file\-upload module$/ do
-  Lolita.modules.include?(:file_upload).should be_true
+  Lolita.modules.include?(Lolita::FileUpload).should be_true
 end
 
 Given /^a rails$/ do
   require 'rails'
+  require 'lolita/rails/all'
   require 'lolita-file-upload/rails'
+end
+
+Given /^rails application$/ do
+  require File.expand_path("test_orm/rails/config/enviroment")
 end
 
 Then /^I have LolitaFileUpload engine$/ do
@@ -36,12 +41,6 @@ Given /^lolita\-file\-upload$/ do
   
 end
 
-Given /^rails engine$/ do
-  Dir[File.expand_path("app/**/*.rb")].each do |path|
-    require path
-  end
-end
-
 Given /^file tab for (\w+)$/ do |model_name|
   @file_tab=Support.file_tab(model_name)
 end
@@ -51,7 +50,7 @@ When /^I set maximum file upload size to (\d+)$/ do |size|
 end
 
 Then /^I (c\w+)\supload file (\w+\.\w+)$/ do |predicate,file_name|
-  file=Lolita::Multimedia::File.create(:asset=>Support.get_file(file_name))
+  file=Lolita::Upload::File.create(:asset=>Support.get_file(file_name))
   if predicate=="can"
     file.errors.should be_empty
   elsif predicate=="cannot"
@@ -64,20 +63,20 @@ Then /^(\w+)\s+has association with ([\w:]+)$/ do |model_name,klass|
   model.lolita.dbi.associations_klass_names.should include(klass)
 end
 
-Then /^association name for (\w+)\sis (:\w+)$/ do |model_name,assoc_name|
+Then /^association name for (\w+)\sis :(\w+)$/ do |model_name,assoc_name|
   model=Support.get_model(model_name)
-  model.lolita.dbi.reflect_on_association(assoc_name).should_not be_nil
+  model.lolita.dbi.reflect_on_association(assoc_name.to_sym).should_not be_nil
 end
 
-When /^I upload file normal_file$/ do
+When /^I upload file (.+)$/ do |file_name|
   pending # express the regexp above with the code you wish you had
 end
 
-Then /^I see normal_file$/ do
+Then /^I see (\w+)$/ do |file_name|
   pending # express the regexp above with the code you wish you had
 end
 
-Then /^I change file attribute name to my_file$/ do
+Then /^I change file attribute ([^\s]) to (\w+)$/ do |attribute,value|
   pending # express the regexp above with the code you wish you had
 end
 
@@ -85,24 +84,29 @@ Then /^save file$/ do
   pending # express the regexp above with the code you wish you had
 end
 
-Then /^I see my_file$/ do
+Then /^I see (\w+)$/ do |file_name|
   pending # express the regexp above with the code you wish you had
 end
 
+When /^I load routes$/ do 
+  # routes is loaded when rails application loads, but i will load matcher for that
+  self.extend(Lolita::Test::Matchers)
+ # RSpec::Matchers.send(:include,Lolita::Test::Matchers)
+end
 
 Then /^I have (get|post|delete|put) route (.+)$/ do |method,url|
-  pending # express the regexp above with the code you wish you had
+  {method=>url}.should be_routable
 end
 
-Given /^multimedia file object$/ do
-  @multimedia_file=Lolita::Multimedia::File.new
+Given /^byte converter$/ do
+  @converter=Lolita::Support::Bytes
 end
 
 When /^I humanize "([^"]*)"$/ do |size|
-  @humanized_size=@multimedia_file.humanize_size(eval(size))
+  @converter=@converter.new(eval(size))
 end
 
 Then /^I should get "([^"]*)" and "([^"]*)"$/ do |unit, limit|
-  @humanized_size[:unit].should == unit
-  @humanized_size[:limit].to_f.should == limit.to_f
+  @converter.unit.should == unit
+  @converter.value.should == limit.to_f
 end

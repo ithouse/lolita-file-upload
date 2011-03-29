@@ -1,0 +1,11 @@
+<%= form_tag(send(:"lolita_upload_#{tab.type}_path"),:method=>:post) do %>
+  <div id="file_upload_container">
+  </div>
+<% end %>
+ <div id="filelist">
+    <%= render_component :"lolita/tab/files", :list,:tab=>tab %>
+  </div>
+<%= render_component :"lolita/tab/files", :upload_script, 
+    :container=>"file_upload_container",:tab=>tab
+%>
+

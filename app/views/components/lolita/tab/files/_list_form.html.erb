@@ -1,0 +1,6 @@
+<td>
+  <%=render_component :"lolita/tab/files", :form, :tab=>tab,:file=>file%>
+</td>
+<td>
+  <%= link_to "S", "#", :onclick=>"$('##{"edit_#{tab.type}_#{file.id}"}').submit();return false;" %>
+</td>

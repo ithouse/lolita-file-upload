@@ -1,0 +1,13 @@
+<table id="file_list_for_<%=tab.type%>" >
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>*</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% resource.send(tab.association.name).each do |file| %>
+      <%= render_component :"lolita/tab/files", :row, :file=>file,:tab=>tab,:value=>nil %>
+    <% end %>
+  </tbody>
+</table>
