@@ -23,12 +23,9 @@ module Lolita
       end
 
       def set_metadata
-        debugger
-        if !name || asset_changed?
-          self.name||=::File.basename(self.asset.store_path)
-          self.asset_size=self.asset.file.size
-          self.asset_extension=::File.extname(self.asset.store_path).gsub(".","")
-        end
+        self.name||=::File.basename(self.asset.store_path)
+        self.asset_size=self.asset.file.size
+        self.asset_extension=::File.extname(self.asset.store_path).gsub(".","")
       end
 
     end
