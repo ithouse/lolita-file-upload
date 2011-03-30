@@ -2,13 +2,13 @@ class CreateLolitaUploadFiles < ActiveRecord::Migration
   class << self
     
     def up
-      create_table :lolita_files, :force=>true do |f|
-        f.string  :asset
-        f.string  :name
-        f.string  :fileable_type
-        f.integer :fileable_id
-        f.string  :asset_extension, :limit=>12
-        f.integer :asset_size
+      create_table :lolita_files, :force=>true do |t|
+        t.string  :asset
+        t.string  :name
+        t.string  :fileable_type
+        t.integer :fileable_id
+        t.string  :asset_extension, :limit=>12
+        t.integer :asset_size
         t.timestamps
       end
 

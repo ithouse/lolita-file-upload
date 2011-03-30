@@ -5,7 +5,8 @@ module LolitaFileUpload
       include Lolita::Generators::FileHelper
       desc "Copy all from public directory to project public directory."
       def copy_all
-        copy_dir("public")
+        root=File.expand_path("../../../../",__FILE__)
+        copy_dir("public",:root=>root)
       end      
     end
   end
