@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-#gem "lolita"
+gem "lolita", ">=3.0.6"
 gem "carrierwave", "~> 0.5.2"
 group :test do
   gem "rspec-rails", "~> 2.5"

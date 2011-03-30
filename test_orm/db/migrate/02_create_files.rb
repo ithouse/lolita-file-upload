@@ -7,6 +7,9 @@ class CreateFiles < ActiveRecord::Migration
         f.string :name
         f.string  :fileable_type
         f.string  :fileable_id
+        f.integer :asset_size
+        f.string  :asset_extension
+        f.timestamps
       end
     end
 
