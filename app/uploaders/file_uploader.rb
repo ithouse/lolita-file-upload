@@ -12,9 +12,9 @@ class FileUploader < CarrierWave::Uploader::Base
     # With slash in first place it will be absolute url, otherwise relative to Rails.root+"/public"
     def store_dir
       if model
-        "uploads/#{model.class.to_s.underscore}/#{timestamp}/#{model.id}"
+        "upload/#{model.class.to_s.underscore}/#{timestamp}/#{model.id}"
       else
-        "uploads/misc"
+        "upload/misc"
       end
     end
 
