@@ -7,7 +7,7 @@
   </thead>
   <tbody>
     <% resource.send(tab.association.name).each do |file| %>
-      <%= render_component :"lolita/tab/files", :row, :file=>file,:tab=>tab,:value=>nil %>
+      <%= render_component *tab.build("",:row,:file=>file,:value=>nil) %>
     <% end %>
   </tbody>
 </table>

@@ -13,22 +13,22 @@ module Lolita
       def create
         @file.asset = params[:file]  
         @file.save! 
-        render_component :"lolita/tab/files",:row,:file=>@file, :tab=>@tab
+        render_component *@tab.build("",:row,:file=>@file)
       end
 
       def edit
-        render_component :"lolita/tab/files", :edit, :file=>@file,:tab=>@tab
+        render_component *@tab.build("",:edit,:file=>@file)
       end
 
       def update
         @file.update_attributes!(params[:file])
-        render_component :"lolita/tab/files", :update, :file=>@file,:tab=>@tab
+        render_component *@tab.build("",:update,:file=>@file)
       end
 
 
       def destroy
         @file.destroy
-        render_component :"lolita/tab/files",:destroy,:file=>@file,:tab=>@tab
+        render_component *@tab.build("",:destroy,:file=>@file)
       end
 
       private

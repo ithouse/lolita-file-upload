@@ -1,9 +1,11 @@
 #TODO add exception if lolita not found, show exception and msg that user should install this gem
 # if files tab is defined, but there no tab for that, maybe check that through gem.
-require "lolita"
+if !defined?(Lolita)
+  require "lolita" 
+end
 $:<<File.dirname(__FILE__) unless $:.include?(File.dirname(__FILE__))
 
-I18n.load_path += Dir[File.expand_path("config/locales")+"/**/*.yml"]
+I18n.load_path += Dir[File.expand_path("config/locales")+"/**/*.yml"] if defined?(I18n)
 
 module Lolita
   module FileUpload
@@ -13,7 +15,9 @@ module Lolita
   end
   
   module Configuration
-  	autoload :FilesTab, "lolita-file-upload/configuration/tab/files"
+    module Tab
+    	autoload :Files, "lolita-file-upload/configuration/tab/files"
+    end
   end
 end
 
