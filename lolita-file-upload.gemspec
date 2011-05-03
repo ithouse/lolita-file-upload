@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{lolita-file-upload}
-  s.version = "0.1.2"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ITHouse", "Arturs Meisters"]
-  s.date = %q{2011-04-12}
+  s.date = %q{2011-05-03}
   s.description = %q{File upload gem for Lolita with with fulll integration - models, controller, views}
   s.email = %q{support@ithouse.lv}
   s.extra_rdoc_files = [
@@ -67,11 +67,9 @@ Gem::Specification.new do |s|
     "public/images/lolita/upload/plupload/throbber.gif",
     "public/images/lolita/upload/plupload/transp50.png",
     "public/javascripts/lolita/upload/I18n/ru.js",
-    "public/javascripts/lolita/upload/jquery.plupload.queue.min.js",
-    "public/javascripts/lolita/upload/jquery.ui.plupload.min.js",
+    "public/javascripts/lolita/upload/jquery.ui.plupload.js",
     "public/javascripts/lolita/upload/plupload.flash.swf",
-    "public/javascripts/lolita/upload/plupload.full.min.js",
-    "public/javascripts/lolita/upload/plupload.silverlight.xap",
+    "public/javascripts/lolita/upload/plupload.full.js",
     "public/stylesheets/lolita/upload/jquery.ui.plupload.css",
     "public/stylesheets/lolita/upload/plupload.queue.css",
     "spec/configuration/tab/files_spec.rb",
@@ -115,14 +113,14 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<lolita>, [">= 3.0.6"])
       s.add_runtime_dependency(%q<carrierwave>, ["~> 0.5.2"])
       s.add_development_dependency(%q<cucumber>, ["~> 0.10"])
-      s.add_development_dependency(%q<cucumber-rails>, ["~> 0.3.2"])
+      s.add_development_dependency(%q<cucumber-rails>, ["~> 0.4.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5"])
     else
       s.add_dependency(%q<lolita>, [">= 3.0.6"])
       s.add_dependency(%q<carrierwave>, ["~> 0.5.2"])
       s.add_dependency(%q<cucumber>, ["~> 0.10"])
-      s.add_dependency(%q<cucumber-rails>, ["~> 0.3.2"])
+      s.add_dependency(%q<cucumber-rails>, ["~> 0.4.0"])
       s.add_dependency(%q<bundler>, ["~> 1.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.5"])
     end
@@ -130,7 +128,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<lolita>, [">= 3.0.6"])
     s.add_dependency(%q<carrierwave>, ["~> 0.5.2"])
     s.add_dependency(%q<cucumber>, ["~> 0.10"])
-    s.add_dependency(%q<cucumber-rails>, ["~> 0.3.2"])
+    s.add_dependency(%q<cucumber-rails>, ["~> 0.4.0"])
     s.add_dependency(%q<bundler>, ["~> 1.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.5"])
   end
