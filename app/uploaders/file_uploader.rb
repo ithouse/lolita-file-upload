@@ -1,5 +1,5 @@
 class FileUploader < CarrierWave::Uploader::Base
-  storage :file
+    storage :file
     def timestamp
       time=if model
         model.created_at || Time.now
