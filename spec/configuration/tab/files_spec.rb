@@ -21,8 +21,8 @@ describe Lolita::Configuration::Tab::Files do
     end
 
     it "should allow to add new one" do
-      tab.extension("pdf")
-      tab.extensions.should == ["pdf"]
+      tab.extension("Image","pdf")
+      tab.extensions.should == [{:title=>"Image",:extensions=>"pdf"}]
     end
   end
 
