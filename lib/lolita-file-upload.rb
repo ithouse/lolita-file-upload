@@ -17,7 +17,11 @@ module Lolita
   module Configuration
     module Tab
     	autoload :Files, "lolita-file-upload/configuration/tab/files"
+      autoload :Images, "lolita-file-upload/configuration/tab/images"
     end
+    # module Field
+    #   autoload :Upload, "lolita-file-upload/configuration/field/upload"
+    # end
   end
 end
 

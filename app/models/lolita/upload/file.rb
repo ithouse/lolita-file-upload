@@ -8,9 +8,18 @@ module Lolita
 
       validate :size_limit
       before_save :set_metadata
+      before_create :singularize_files
       
 
       private
+
+      def singularize_files
+        if self.fileable && lolita = self.fileable.class.lolita
+          if lolita.tabs.by_type(:files).association_type == :one
+            self.class.destroy_all(["fileable_type = :type AND fileable_id = :id AND fileable_id > 0",:type => fileable_type,:id => fileable_id])
+          end
+        end
+      end
 
       def size_limit
         if self.fileable && lolita=self.fileable.class.lolita

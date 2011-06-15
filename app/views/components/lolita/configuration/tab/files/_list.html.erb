@@ -6,7 +6,8 @@
     </tr>
   </thead>
   <tbody>
-    <% resource.send(tab.association.name).each do |file| %>
+    <% files = tab.association_type == :one ? [resource.send(tab.association.name)].compact :  resource.send(tab.association.name)%>
+    <% files.each do |file| %>
       <%= render_component *tab.build("",:row,:file=>file,:value=>nil) %>
     <% end %>
   </tbody>

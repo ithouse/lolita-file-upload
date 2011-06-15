@@ -7,7 +7,7 @@ module Lolita
     	class Files < Lolita::Configuration::Tab::Base
     	
   	  	lolita_accessor :extensions,:maxfilesize
-        attr_reader :association
+        attr_reader :association, :association_type
 
         # As any other Lolita::Configuration::Tab this should receive _dbi_ object.
         # Additional _args_ that may represent methods, for details see Lolita::Configuration::Tab.
@@ -25,21 +25,24 @@ module Lolita
         #     # using in lolita configuration definition
         #     lolita do
         #       tab(:file) do
-        #         extension :pdf
+        #         extension "Images", "png,jpg"
         #       end
         #     end
         #     
         #     # using for object
         #     Lolita::Configuration.FileTab.new(dbi).extension("pdf")
-  	  	def extension(value)
-  	  		@extensions << value
+  	  	def extension(title, extensions)
+  	  		@extensions << {:title => title, :extensions => extensions}
   	  	end
   	  	
         private
 
         def set_association
           @association=self.dbi.associations.detect{|k,assoc| assoc.class_name=="Lolita::Upload::File"}
-          @association=@association.last if @association
+          if @association
+            @association=@association.last
+            @association_type = self.dbi.association_macro(@association)
+          end
         end
 
         def validate

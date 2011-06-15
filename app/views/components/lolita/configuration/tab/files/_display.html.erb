@@ -4,8 +4,8 @@
   </div>
 <% end %>
  <div id="filelist">
-    <%= render_component *tab.build("",:list)%>
+    <%= render_component tab,:list %>
   </div>
-<%= render_component *tab.build("",:upload_script,:container=>"file_upload_container")%>
+<%= render_component tab, :upload_script, :container => "file_upload_container"%>
 <%= render_component :"lolita/configuration/tab", :fields, :tab=>tab %>
 

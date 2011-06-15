@@ -9,7 +9,7 @@ describe Lolita::Upload::File do
       Lolita::Upload::File.new(:asset=>File.open(Support.get_file("normal_file.txt")))
   }
   let(:tab){
-    Lolita::Configuration::FilesTab.new(dbi)
+    Lolita::Configuration::Tab::Files.new(dbi)
   }
 
   context "upload" do

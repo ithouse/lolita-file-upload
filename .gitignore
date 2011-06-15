@@ -2,6 +2,7 @@ Gemfile.lock
 uploads
 .project
 .settings
+.rvmrc
 coverage.data
 test_orm/log
 # rcov generated
