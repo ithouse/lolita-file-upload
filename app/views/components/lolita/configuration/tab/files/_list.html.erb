@@ -1,4 +1,4 @@
-<table id="file_list_for_<%=tab.type%>" >
+<table id="file_list_for_<%=tab.type%>_<%=tab.uploader%>" >
   <thead>
     <tr>
       <th>Name</th>
@@ -6,9 +6,13 @@
     </tr>
   </thead>
   <tbody>
-    <% files = tab.association_type == :one ? [resource.send(tab.association.name)].compact :  resource.send(tab.association.name)%>
-    <% files.each do |file| %>
-      <%= render_component *tab.build("",:row,:file=>file,:value=>nil) %>
+    <% unless tab.association_type == :self %>
+      <% files = tab.association_type == :one ? [resource.send(tab.association.name)].compact :  resource.send(tab.association.name) %>
+      <% files.each do |file| %>
+        <%= render_component *tab.build("",:row,:file=>file,:value=>nil) %>
+      <% end %>
+    <% else %>
+      <%= render_component *tab.build("",:single_row,:file=>resource,:value=>nil) %>
     <% end %>
   </tbody>
 </table>

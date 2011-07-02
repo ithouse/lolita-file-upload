@@ -28,8 +28,9 @@
     multipart: true,
     multipart_params: {  
       "authenticity_token" : '<%= form_authenticity_token %>',
-      "<%="upload[#{tab.association.options[:as]}_type]"%>": "<%=resource.class%>",
-      "<%="upload[#{tab.association.options[:as]}_id]"%>": "<%=resource.new_record? ? 0 : resource.id%>"
+      "upload[fileable_type]": "<%= resource.class %>",
+      "upload[fileable_id]": "<%= resource.new_record? ? 0 : resource.id %>",
+      "uploader": "<%= tab.uploader %>"
     },
     headers:{
         "X-CSRF-Token": $("meta[name='csrf-token']").attr("content")
@@ -39,12 +40,12 @@
     flash_swf_url : '/javascripts/lolita/upload/plupload.flash.swf',
     init:{
       FileUploaded:function(uploader, file, info){
-        <% if tab.association_type == :one %>
-          uploader.splice(0,10);
-          $("#file_list_for_<%=tab.type%>>tbody").html("")
-          $("#file_list_for_<%=tab.type%>>tbody").append(info.response)
+        <% if tab.association_type == :many %>
+          $("#file_list_for_<%=tab.type%>_<%=tab.uploader%>>tbody").append(info.response)
         <% else %>
-          $("#file_list_for_<%=tab.type%>>tbody").append(info.response)
+          uploader.splice(0,10);
+          $("#file_list_for_<%=tab.type%>_<%=tab.uploader%>>tbody").html("")
+          $("#file_list_for_<%=tab.type%>_<%=tab.uploader%>>tbody").append(info.response)
         <% end %>
 
         <% if tab.association_type == :many %>
@@ -59,7 +60,7 @@
         })
 
         var new_ids=[]
-        $("#file_list_for_<%=tab.type%> tr[data-<%=tab.type%>-id]").each(function(){
+        $("#file_list_for_<%=tab.type%>_<%=tab.uploader%> tr[data-<%=tab.type%>-id]").each(function(){
           if($.inArray($(this).attr("data-<%=tab.type%>-id"),existing_ids)<0){
             new_ids.push($(this).attr("data-<%=tab.type%>-id"))
           }

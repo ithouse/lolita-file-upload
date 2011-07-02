@@ -1,0 +1,6 @@
+- unless tab.association_type == :self
+  - files = tab.association_type == :one ? [resource.send(tab.association.name)].compact :  resource.send(tab.association.name)
+  - files.each do |file|
+    = image_tag(file.asset.url)
+- else
+  = image_tag(resource.send(tab.uploader).url)
