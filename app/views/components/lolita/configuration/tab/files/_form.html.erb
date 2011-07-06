@@ -1,3 +1,7 @@
-<%= form_tag send(:"lolita_upload_#{tab.type.to_s.singularize}_path",:id=>file.id),:method=>:put,:remote=>true,:id=>"edit_#{tab.type}_#{file.id}" do %>
-    <%= text_field_tag "file[name]",file.name %>
+<%= form_tag send(:"lolita_#{resource_class.model_name.singular}_upload_path", "#{resource_class.model_name.singular}_id" => resource.id, :association => tab.association.name, :id=>file.id),:method=>:put,:remote=>true,:id=>"edit_#{tab.association.name}_#{file.id}" do %>
+  <% tab.editable_fields.each do |name| %>
+    <%= label_tag "file[#{name}]", file.class.human_attribute_name(name) %>
+    <%= text_field_tag "file[#{name}]",file.send(name) %>
+    <br />
   <% end %>
+<% end %>

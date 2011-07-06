@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "lolita", "~>3.1.8"
+gem "lolita", "~>3.1.9"
 gem "carrierwave", "~> 0.5.2"
 group :test do
   gem "rspec-rails", "~> 2.6"
@@ -9,7 +9,7 @@ group :test do
   gem "sqlite3"
   gem "rspec", "~> 2.6"
   gem 'cover_me', '>= 1.0.0.rc6'
-  gem 'activerecord', "~> 3.0.7"
+  gem 'rails', "~> 3.0.9"
 end
 
 group :development do

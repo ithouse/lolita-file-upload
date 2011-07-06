@@ -1,0 +1,5 @@
+<% if file.send(tab.uploader).to_s =~ /(jpg|jpeg|png|gif)$/i %>
+  <%= link_to image_tag(file.send(tab.uploader).url), file.send(tab.uploader).url %>
+<% else %>
+  <%= link_to file.send(tab.uploader).url, file.send(tab.uploader).url %>
+<% end %>

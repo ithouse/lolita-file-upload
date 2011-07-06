@@ -1,37 +1,10 @@
-<style>
-  #fixed-gallery {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    border-bottom: 4px solid #CCC;
-    background-color: white;
-    z-index: 200001;
-    width: 100%;
-    display: block;
-    border-bottom: 4px solid #CCC;
-    -moz-box-shadow: #666 2px 2px 15px;
-    -webkit-box-shadow: #666 2px 2px 15px;
-    box-shadow: #666 2px 2px 15px;
-    display:none;
-    overflow: auto;
-  }
-  #fixed-gallery button{
-    position: fixed;
-    right: 35px;
-    z-index: 200001;
-  }
-</style>
-<div id="fixed-gallery" data-uploader="<%= tab.uploader %>">
-  <%= render_component tab,:fixed_gallery %>
-  <button onclick="$('#fixed-gallery').hide();">Aizvērt</button>
-</div>
-<%= form_tag(send(:"lolita_upload_#{tab.type}_path"),:method=>:post, :id=>"#{tab.type}_#{tab.uploader}_form") do %>
-  <div id="file_upload_container_<%="#{tab.type}_#{tab.uploader}"%>">
+<%= form_tag(send(:"create_upload_lolita_#{tab.dbi.klass.model_name.plural.downcase}_path", :association => tab.association.name),:method=>:post, :id=>"#{tab.association.name}_form") do %>
+  <div id="file_upload_container_<%="#{tab.association.name}"%>">
     Your bowser don't have HTML5 or Flash support.
   </div>
 <% end %>
  <div id="filelist">
     <%= render_component tab,:list %>
   </div>
-<%= render_component tab, :upload_script, :container => "file_upload_container_#{tab.type}_#{tab.uploader}"%>
+<%= render_component tab, :upload_script, :container => "file_upload_container_#{tab.association.name}"%>
 <%= render_component :"lolita/configuration/tab", :fields, :tab=>tab %>

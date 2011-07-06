@@ -1,4 +1,3 @@
-
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/overcast/jquery-ui.css" type="text/css" />
   <link rel="stylesheet" href="/stylesheets/lolita/upload/jquery.ui.plupload.css" type="text/css" />
 
@@ -13,24 +12,26 @@
   $("#<%=container%>").plupload({
     // General settings
     runtimes : 'html5,flash',
-    url : '<%=send(:"lolita_upload_#{tab.type}_path")%>',
-    max_file_size : '10mb',
-    chunk_size : '1mb',
+    url : '<%=send(:"create_upload_lolita_#{tab.dbi.klass.model_name.plural.downcase}_path", :association => tab.association.name)%>',
+    max_file_size : '100mb',
     unique_names : true,
     rename: true,
-    <% if tab.extensions.any? %>
+    <% if tab.filters.any? %>
       filters:[
-        <% tab.extensions.each do |ext_data| %>
-          {title: "<%=ext_data[:title]%>", extensions: "<%= ext_data[:extensions].is_a?(Array) ? ext_data[:extensions].join(",") : ext_data[:extensions] %>"},
+        <% tab.filters.each do |fdata| %>
+          {title: "<%=fdata[:title]%>", extensions: "<%= fdata[:extensions].is_a?(Array) ? fdata[:extensions].join(",") : fdata[:extensions] %>"},
         <% end %>
       ],
     <% end %>
     multipart: true,
     multipart_params: {  
       "authenticity_token" : '<%= form_authenticity_token %>',
-      "upload[fileable_type]": "<%= resource.class %>",
-      "upload[fileable_id]": "<%= resource.new_record? ? 0 : resource.id %>",
-      "uploader": "<%= tab.uploader %>"
+      <% if tab.association.options[:as] -%>
+      "<%="upload[#{tab.association.options[:as]}_type]"%>": "<%=resource.class%>",
+      "<%="upload[#{tab.association.options[:as]}_id]"%>": "<%=resource.new_record? ? 0 : resource.id%>"
+      <% else -%>
+      "<%="upload[#{lolita_mapping.singular}_id]"%>": "<%=resource.new_record? ? 0 : resource.id%>"
+      <% end -%>
     },
     headers:{
         "X-CSRF-Token": $("meta[name='csrf-token']").attr("content")
@@ -41,32 +42,32 @@
     init:{
       FileUploaded:function(uploader, file, info){
         <% if tab.association_type == :many %>
-          $("#file_list_for_<%=tab.type%>_<%=tab.uploader%>>tbody").append(info.response)
+          $("#file_list_for_<%=tab.association.name%>>tbody").append(info.response)
         <% else %>
           uploader.splice(0,10);
-          $("#file_list_for_<%=tab.type%>_<%=tab.uploader%>>tbody").html("")
-          $("#file_list_for_<%=tab.type%>_<%=tab.uploader%>>tbody").append(info.response)
+          $("#file_list_for_<%=tab.association.name%>>tbody").html("")
+          $("#file_list_for_<%=tab.association.name%>>tbody").append(info.response)
         <% end %>
 
         <% if tab.association_type == :many %>
-          var ids="<%="#{resource_name}[#{tab.association.name}_ids][]"%>"
+          var ids="<%="#{resource_name}[#{tab.association.name.to_s.singularize}_ids][]"%>"
         <% else %>
-          var ids = "<%="#{resource_name}[#{tab.association.name}_new]"%>"
+          var ids = "<%="#{resource_name}[#{tab.association.name.to_s.singularize}_new]"%>"
         <% end %>
 
         var existing_ids=[]
-        $("input.<%=tab.type%>-ids").each(function(){
+        $("input.<%=tab.association.name%>-ids").each(function(){
           existing_ids.push($(this).val())
         })
 
         var new_ids=[]
-        $("#file_list_for_<%=tab.type%>_<%=tab.uploader%> tr[data-<%=tab.type%>-id]").each(function(){
-          if($.inArray($(this).attr("data-<%=tab.type%>-id"),existing_ids)<0){
-            new_ids.push($(this).attr("data-<%=tab.type%>-id"))
+        $("#file_list_for_<%=tab.association.name%> tr[data-<%=tab.association.name%>-id]").each(function(){
+          if($.inArray($(this).attr("data-<%=tab.association.name%>-id"),existing_ids)<0){
+            new_ids.push($(this).attr("data-<%=tab.association.name%>-id"))
           }
         })
         for(var i in new_ids){
-          $("#<%=tab.type%>_form").append('<input type="hidden" class="<%=tab.type%>-ids" name="'+ids+'" value="'+new_ids[i]+'" />')
+          $("#<%=tab.association.name%>_form").append('<input type="hidden" class="<%=tab.association.name%>-ids" name="'+ids+'" value="'+new_ids[i]+'" />')
         }
 
       }  

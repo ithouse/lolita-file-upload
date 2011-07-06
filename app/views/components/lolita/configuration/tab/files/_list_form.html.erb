@@ -2,5 +2,5 @@
   <%=render_component *tab.build("",:form,:file=>file)%>
 </td>
 <td>
-  <%= link_to "S", "#", :onclick=>"$('##{"edit_#{tab.type}_#{file.id}"}').submit();return false;" %>
+  <%= link_to "S", "#", :onclick=>"$('#edit_#{tab.association.name}_#{file.id}').submit();return false;" %>
 </td>
