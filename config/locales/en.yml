@@ -3,6 +3,9 @@ en:
     upload:
       errors:
         "file too big": "file too big (max %{value} %{unit})"
+    tabs:
+      titles:
+        files: "Files"
     support:
       bytes:
         byte:

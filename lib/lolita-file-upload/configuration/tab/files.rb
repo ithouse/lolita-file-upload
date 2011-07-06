@@ -17,7 +17,7 @@ module Lolita
   	  		@filters=[]
           @dbi=dbi
           @editable_fields=[]
-          set_default_uploader
+          set_default_association
   	  		super
   	  	end
 
@@ -41,11 +41,7 @@ module Lolita
   	  	end
 
         def uploader name=nil
-          if name
-            @uploader = name.to_sym
-            @association = self.dbi.klass
-            @association_type = :self
-          end
+          @uploader = name.to_sym if name
           @uploader
         end
 
@@ -75,16 +71,6 @@ module Lolita
 
         def all_text_fields
           self.association_dbi.fields.collect{|field| field[:name] if field[:type] == "string"}.compact
-        end
-
-        def set_default_uploader
-          unless self.dbi.klass.uploaders.empty?
-            @uploader = self.dbi.klass.uploaders.keys.first
-            @association = self.dbi.klass
-            @association_type = :self
-          else
-            set_default_association
-          end
         end
 
         def set_default_association

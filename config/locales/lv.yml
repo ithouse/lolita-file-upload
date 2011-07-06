@@ -1,0 +1,8 @@
+lv:
+  lolita:
+    upload:
+      errors:
+        "file too big": "fails par lielu (maksimums %{value} %{unit})"
+    tabs:
+      titles:
+        files: "Faili"
