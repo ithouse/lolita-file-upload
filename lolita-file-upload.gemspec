@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{lolita-file-upload}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ITHouse", "Arturs Meisters"]
@@ -40,6 +40,7 @@ Gem::Specification.new do |s|
     "app/views/components/lolita/configuration/tab/files/_update.js.erb",
     "app/views/components/lolita/configuration/tab/files/_upload_script.html.erb",
     "config/locales/en.yml",
+    "config/locales/lv.yml",
     "features/configuration_for_tab.feature",
     "features/connect_with_lolita.feature",
     "features/extend_resources_with_new_routes.feature",
