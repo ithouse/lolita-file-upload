@@ -1,5 +1,7 @@
 class FileUploader < CarrierWave::Uploader::Base
     storage :file
+    after :remove, :delete_empty_upstream_dirs
+
     def timestamp
       time=if model
         model.created_at || Time.now
@@ -16,6 +18,16 @@ class FileUploader < CarrierWave::Uploader::Base
       else
         "upload/misc"
       end
+    end
+
+    def delete_empty_upstream_dirs
+      path = ::File.expand_path(store_dir, root)
+      Dir.delete(path) # fails if path not empty dir
+      
+     # path = ::File.expand_path(base_store_dir, root)
+     # Dir.delete(path) # fails if path not empty dir
+    rescue SystemCallError
+      true # nothing, the dir is not empty
     end
 
 end
