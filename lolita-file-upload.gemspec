@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{lolita-file-upload}
-  s.version = "0.1.4"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ITHouse", "Arturs Meisters"]
-  s.date = %q{2011-06-15}
+  s.date = %q{2011-07-06}
   s.description = %q{File upload gem for Lolita with with fulll integration - models, controller, views}
   s.email = %q{support@ithouse.lv}
   s.extra_rdoc_files = [
@@ -24,14 +24,15 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "app/controllers/lolita/upload/files_controller.rb",
-    "app/controllers/lolita/upload/images_controller.rb",
+    "app/controllers/lolita/uploads_controller.rb",
     "app/models/lolita/upload/file.rb",
     "app/uploaders/file_uploader.rb",
     "app/views/components/lolita/configuration/tab/files/_cells.html.erb",
     "app/views/components/lolita/configuration/tab/files/_destroy.js.erb",
     "app/views/components/lolita/configuration/tab/files/_display.html.erb",
     "app/views/components/lolita/configuration/tab/files/_edit.js.erb",
+    "app/views/components/lolita/configuration/tab/files/_file.html.erb",
+    "app/views/components/lolita/configuration/tab/files/_fixed_gallery.html.haml",
     "app/views/components/lolita/configuration/tab/files/_form.html.erb",
     "app/views/components/lolita/configuration/tab/files/_list.html.erb",
     "app/views/components/lolita/configuration/tab/files/_list_form.html.erb",
@@ -39,6 +40,7 @@ Gem::Specification.new do |s|
     "app/views/components/lolita/configuration/tab/files/_update.js.erb",
     "app/views/components/lolita/configuration/tab/files/_upload_script.html.erb",
     "config/locales/en.yml",
+    "config/locales/lv.yml",
     "features/configuration_for_tab.feature",
     "features/connect_with_lolita.feature",
     "features/extend_resources_with_new_routes.feature",
@@ -51,7 +53,6 @@ Gem::Specification.new do |s|
     "lib/generators/lolita_file_upload/templates/migration.rb",
     "lib/lolita-file-upload.rb",
     "lib/lolita-file-upload/configuration/tab/files.rb",
-    "lib/lolita-file-upload/configuration/tab/images.rb",
     "lib/lolita-file-upload/module.rb",
     "lib/lolita-file-upload/rails.rb",
     "lib/lolita-file-upload/rails/file_upload_routes.rb",
@@ -76,7 +77,6 @@ Gem::Specification.new do |s|
     "public/stylesheets/lolita/upload/jquery.ui.plupload.css",
     "public/stylesheets/lolita/upload/plupload.queue.css",
     "spec/configuration/tab/files_spec.rb",
-    "spec/configuration/tab/images_spec.rb",
     "spec/lolita/support/bytes_spec.rb",
     "spec/models/file_spec.rb",
     "spec/spec_helper.rb",
@@ -100,10 +100,7 @@ Gem::Specification.new do |s|
     "test_orm/rails/log/development.log",
     "test_orm/support.rb",
     "test_orm/uploaders/list_image_uploader.rb",
-    "test_orm/uploaders/main_image_uploader.rb",
-    "upload/lolita/upload/file/201105/1/large_file.txt",
-    "upload/lolita/upload/file/201106/1/large_file.txt",
-    "upload/misc/large_file.txt"
+    "test_orm/uploaders/main_image_uploader.rb"
   ]
   s.homepage = %q{http://github.com/ithouse/lolita-file-upload}
   s.licenses = ["MIT"]
@@ -115,14 +112,14 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<lolita>, ["~> 3.1.8"])
+      s.add_runtime_dependency(%q<lolita>, ["~> 3.1.9"])
       s.add_runtime_dependency(%q<carrierwave>, ["~> 0.5.2"])
       s.add_development_dependency(%q<cucumber>, ["~> 0.10"])
       s.add_development_dependency(%q<cucumber-rails>, ["~> 0.5.2"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5"])
     else
-      s.add_dependency(%q<lolita>, ["~> 3.1.8"])
+      s.add_dependency(%q<lolita>, ["~> 3.1.9"])
       s.add_dependency(%q<carrierwave>, ["~> 0.5.2"])
       s.add_dependency(%q<cucumber>, ["~> 0.10"])
       s.add_dependency(%q<cucumber-rails>, ["~> 0.5.2"])
@@ -130,7 +127,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jeweler>, ["~> 1.5"])
     end
   else
-    s.add_dependency(%q<lolita>, ["~> 3.1.8"])
+    s.add_dependency(%q<lolita>, ["~> 3.1.9"])
     s.add_dependency(%q<carrierwave>, ["~> 0.5.2"])
     s.add_dependency(%q<cucumber>, ["~> 0.10"])
     s.add_dependency(%q<cucumber-rails>, ["~> 0.5.2"])

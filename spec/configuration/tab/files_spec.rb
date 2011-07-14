@@ -12,17 +12,17 @@ describe Lolita::Configuration::Tab::Files do
   describe "extensions" do
 
     it "should return empty array for new tab" do
-      tab.extensions.should == []
+      tab.filters.should == []
     end 
 
     it "all can be assigned" do
-      tab.extensions=["pdf","xls"]
-      tab.extensions.should == ["pdf", "xls"]
+      tab.filters=["pdf","xls"]
+      tab.filters.should == ["pdf", "xls"]
     end
 
     it "should allow to add new one" do
-      tab.extension("Image","pdf")
-      tab.extensions.should == [{:title=>"Image",:extensions=>"pdf"}]
+      tab.filters("Image","pdf")
+      tab.filters.should == [{:title=>"Image",:extensions=>"pdf"}]
     end
   end
 

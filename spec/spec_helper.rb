@@ -1,4 +1,6 @@
 require 'rubygems'
+require "rails"
+require "lolita"
 
 require File.expand_path('test_orm/coverage')
 require File.expand_path('test_orm/support')
@@ -17,6 +19,7 @@ require File.expand_path("test_orm/#{current_orm}")
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 Support.load_rails_application
+ 
 if defined?(Rails)
 	#require 'rspec/rails' 
 	# RSpec.configure do |config|

@@ -1,5 +1,11 @@
-<td><%=file.name || "-"%></td>
-<td>
-  <%=link_to "E",send(:"edit_lolita_upload_#{tab.type.to_s.singularize}_path",:id=>file.id),:remote=>true %>
-  <%= link_to "D",send(:"lolita_upload_#{tab.type.to_s.singularize}_path",:id=>file.id),:method=>:delete,:remote=>true,:confirm=>"Are you sure?" %>
+<td style="margin-top: 3px; border-bottom: 2px solid #E1E1E1; width: 600px;font-weight: bold; color: #737373; font-size: 14px; padding: 7px 20px; vertical-align: middle;">
+  <% if file.send(tab.uploader).to_s =~ /(jpg|jpeg|png|gif)$/i %>
+    <%= link_to image_tag(file.send(tab.uploader).url, :style=>"width:300px; height 160px;"), file.send(tab.uploader).url %>
+  <% else %>
+    <%= link_to file.send(tab.uploader).url, file.send(tab.uploader).url %>
+  <% end %>
+</td>
+<td style="margin-top: 3px; border-bottom: 2px solid #E1E1E1; width: 55px;text-align: center; font-size: 14px; padding: 7px 20px; vertical-align: middle;">
+  <%= link_to  image_tag("edit.png"),send(:"edit_lolita_#{tab.dbi.klass.model_name.singular}_upload_path", "#{tab.dbi.klass.model_name.singular}_id" => (resource.nil? || resource.new_record?) ? 0 : resource.id, :association => tab.association.name, :id=>file.id),:remote=>true %>
+  <%= link_to image_tag("delete_picture.png"),send(:"lolita_#{tab.dbi.klass.model_name.singular}_upload_path", "#{tab.dbi.klass.model_name.singular}_id" => (resource.nil? || resource.new_record?) ? 0 : resource.id, :association => tab.association.name, :id=>file.id),:method=>:delete,:remote=>true,:confirm=>"Are you sure?" %>
 </td>

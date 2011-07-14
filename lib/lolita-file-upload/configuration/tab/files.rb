@@ -6,49 +6,86 @@ module Lolita
       # * <tt>maxfilesize</tt> - uploaded file maximums size
     	class Files < Lolita::Configuration::Tab::Base
     	
-  	  	lolita_accessor :extensions,:maxfilesize
-        attr_reader :association, :association_type
+  	  	lolita_accessor :extensions, :maxfilesize, :filters
+        attr_reader :association, :uploader, :association_type, :editable_fields
 
         # As any other Lolita::Configuration::Tab this should receive _dbi_ object.
         # Additional _args_ that may represent methods, for details see Lolita::Configuration::Tab.
         # And block.
   	  	def initialize(dbi,*args,&block)
           @type=:files
-  	  		@extensions=[]
+  	  		@filters=[]
           @dbi=dbi
-          set_association
+          @editable_fields=[]
+          set_default_association
   	  		super
   	  	end
 
-        # Add another extension to #extensions white list.
+        # NOTE: Filters only limit frontend, backend limit is set in Uploader
+        #
+        # Add another filter or just title for uploader's extension_white_list
         # ====Example
         #     # using in lolita configuration definition
         #     lolita do
         #       tab(:file) do
-        #         extension "Images", "png,jpg"
+        #         title "Pictures"
+        #         filters "Images", "png,jpg"
+        #         # OR
+        #         filters "Pictures"
         #       end
         #     end
         #     
-        #     # using for object
-        #     Lolita::Configuration.FileTab.new(dbi).extension("pdf")
-  	  	def extension(title, extensions)
-  	  		@extensions << {:title => title, :extensions => extensions}
+  	  	def filters(title=nil, extensions=nil)
+  	  		@filters << {:title => title, :extensions => extensions || self.extension_white_list} if title
+          (@filters.empty? && self.extension_white_list) ? [{:title => self.title, :extensions => self.extension_white_list}] : @filters
   	  	end
-  	  	
+
+        def uploader name=nil
+          @uploader = name.to_sym if name
+          @uploader
+        end
+
+        def association name=nil
+          if name
+            @association = self.dbi.associations[name]
+            @association_type = self.dbi.association_macro(@association)
+            @uploader = @association.klass.uploaders.keys.first
+          end
+          @association
+        end
+
+        def association_dbi
+          Lolita::DBI::Base.new self.association.klass
+        end
+
+        def editable_fields *names
+          @editable_fields = names unless names.empty?
+          @editable_fields.empty? ? all_text_fields : @editable_fields
+        end
+
+        def extension_white_list
+          self.association.klass.uploaders[self.uploader].new.extension_white_list
+        end
+
         private
 
-        def set_association
-          @association=self.dbi.associations.detect{|k,assoc| assoc.class_name=="Lolita::Upload::File"}
+        def all_text_fields
+          self.association_dbi.fields.collect{|field| field[:name] if field[:type] == "string"}.compact
+        end
+
+        def set_default_association
+          @association=self.dbi.associations.detect{|k,assoc| !assoc.klass.uploaders.empty? }
           if @association
             @association=@association.last
             @association_type = self.dbi.association_macro(@association)
+            @uploader = @association.klass.uploaders.keys.first
           end
         end
 
         def validate
           super
-          unless self.association
-            raise Lolita::AssociationError, "#{self.dbi.klass} has no association with Lolita::Upload::File. Put has_many :files, :class_name=>'Lolita::Upload::File' to have one."
+          unless self.uploader
+            raise "#{self.dbi.klass} has no uploader. Add your custom uploader or use Lolita's built in `has_many :files, :class_name=>'Lolita::Upload::File'`."
           end
         end
 

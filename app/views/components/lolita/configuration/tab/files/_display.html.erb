@@ -1,11 +1,10 @@
-<%= form_tag(send(:"lolita_upload_#{tab.type}_path"),:method=>:post, :id=>"#{tab.type}_form") do %>
-  <div id="file_upload_container">
+<%= form_tag(send(:"create_upload_lolita_#{tab.dbi.klass.model_name.plural.downcase}_path", :association => tab.association.name),:method=>:post, :id=>"#{tab.association.name}_form") do %>
+  <div id="file_upload_container_<%="#{tab.association.name}"%>">
     Your bowser don't have HTML5 or Flash support.
   </div>
 <% end %>
  <div id="filelist">
     <%= render_component tab,:list %>
   </div>
-<%= render_component tab, :upload_script, :container => "file_upload_container"%>
+<%= render_component tab, :upload_script, :container => "file_upload_container_#{tab.association.name}"%>
 <%= render_component :"lolita/configuration/tab", :fields, :tab=>tab %>
-
