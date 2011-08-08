@@ -4,7 +4,7 @@ module ActionDispatch::Routing
 
     def lolita_file_upload_route mapping, controllers
       # /lolita/articles/1/pictures/5
-      resources mapping.plural, :module=>mapping.module do
+      resources mapping.plural, :module=>mapping.module, :only=>:none do
         collection do
           match "/:association/create", :to => "#{controllers[:uploads]}#create", :as => "create_upload", :method => :post
         end
