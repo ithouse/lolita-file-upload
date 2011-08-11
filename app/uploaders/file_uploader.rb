@@ -1,6 +1,11 @@
 class FileUploader < CarrierWave::Uploader::Base
+    include CarrierWave::MiniMagick
     storage :file
     after :remove, :delete_empty_upstream_dirs
+
+    version :normalized do
+      process :resize_to_fit => [600,600]
+    end
 
     def timestamp
       time=if model

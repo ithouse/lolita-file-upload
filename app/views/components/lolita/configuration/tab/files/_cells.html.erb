@@ -1,6 +1,7 @@
 <td style="margin-top: 3px; border-bottom: 2px solid #E1E1E1; width: 600px;font-weight: bold; color: #737373; font-size: 14px; padding: 7px 20px; vertical-align: middle;">
   <% if file.send(tab.uploader).to_s =~ /(jpg|jpeg|png|gif)$/i %>
-    <%= link_to image_tag(file.send(tab.uploader).url, :style=>"width:300px; height 160px;"), file.send(tab.uploader).url %>
+    <% url = file.send(tab.uploader).normalized.url.blank? ? file.send(tab.uploader).url : file.send(tab.uploader).normalized.url
+    <%= link_to image_tag(url, :style=>"width:300px; height 160px;"), url %>
   <% else %>
     <%= link_to file.send(tab.uploader).url, file.send(tab.uploader).url %>
   <% end %>
