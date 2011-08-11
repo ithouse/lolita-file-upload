@@ -29,6 +29,4 @@
       - if file.send(tab.uploader).to_s =~ /(jpg|jpeg|png|gif)$/i 
         - url = file.send(tab.uploader).normalized.url.blank? ? file.send(tab.uploader).url : file.send(tab.uploader).normalized.url
         = image_tag(url)
-      - else
-        = link_to file.send(tab.uploader).url, file.send(tab.uploader).url
   %button{:onclick=>"$('#fixed-gallery').hide();"}Aizvērt
