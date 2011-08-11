@@ -11,7 +11,7 @@ class Lolita::UploadsController < ApplicationController
   def create
     @file.send(:"#{@tab.uploader}=",params[:file])
     @file.save! 
-    render_component *@tab.build("",:row,:file=>@file)
+    render_component *@tab.build("",:row,:file=>@file, :format => "html")
   end
 
   def edit
