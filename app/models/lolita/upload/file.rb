@@ -32,9 +32,11 @@ module Lolita
       end
 
       def set_metadata
-        self.name||=::File.basename(self.asset.store_path)
-        self.asset_size=self.asset.file.size
-        self.asset_extension=::File.extname(self.asset.store_path).gsub(".","")
+        unless self.asset.blank?
+          self.name||=::File.basename(self.asset.store_path)
+          self.asset_size=self.asset.file.size
+          self.asset_extension=::File.extname(self.asset.store_path).gsub(".","")
+        end
       end
 
     end
