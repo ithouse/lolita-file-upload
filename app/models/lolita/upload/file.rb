@@ -6,14 +6,15 @@ module Lolita
       mount_uploader :asset, FileUploader
       belongs_to :fileable, :polymorphic=>true
 
-      validate :size_limit
+      #validate :size_limit FIXME to work with more than one tab
       before_save :set_metadata
-      before_create :singularize_files
+      #before_create :singularize_files
       
 
       private
 
       def singularize_files
+        
         if self.fileable && lolita = self.fileable.class.lolita
           if lolita.tabs.by_type(:files).association_type == :one
             self.class.destroy_all(["fileable_type = :type AND fileable_id = :id AND fileable_id > 0",:type => fileable_type,:id => fileable_id])

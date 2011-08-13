@@ -3,7 +3,7 @@ class FileUploader < CarrierWave::Uploader::Base
     storage :file
     after :remove, :delete_empty_upstream_dirs
 
-    version :normalized do
+    version :normalized, :if => :image? do
       process :resize_to_fit => [600,600]
     end
 
@@ -33,6 +33,10 @@ class FileUploader < CarrierWave::Uploader::Base
      # Dir.delete(path) # fails if path not empty dir
     rescue SystemCallError
       true # nothing, the dir is not empty
+    end
+
+    def image?(file)
+      File.extname(file.filename.to_s).match(/jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF/)
     end
 
 end
