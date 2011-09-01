@@ -74,7 +74,9 @@ module Lolita
         end
 
         def set_default_association
-          @association=self.dbi.associations.detect{|k,assoc| !assoc.klass.uploaders.empty? }
+          @association=self.dbi.associations.detect{|k,assoc| 
+            !assoc.klass.uploaders.empty? 
+          }
           if @association
             @association=@association.last
             @association_type = self.dbi.association_macro(@association)
