@@ -2,6 +2,7 @@ source "http://rubygems.org"
 
 gem "lolita", "~>3.1.9"
 gem "carrierwave", "~> 0.5.2"
+gem "mini_magick"
 group :test do
   gem "rspec-rails", "~> 2.6"
   gem "ffaker"
