@@ -12,7 +12,11 @@
   $("#<%=container%>").plupload({
     // General settings
     runtimes : 'html5,flash',
-    url : '<%=send(:"create_upload_lolita_#{tab.dbi.klass.model_name.plural.downcase}_path", :association => tab.association.name)%>',
+    <%
+      model_name = tab.dbi.klass.model_name.plural.downcase
+      addon = model_name == model_name.singularize ? "_index" : ""
+    %>
+    url : '<%=send(:"create_upload_lolita_#{model_name}#{addon}_path", :association => tab.association.name)%>',
     max_file_size : '100mb',
     unique_names : true,
     rename: true,
