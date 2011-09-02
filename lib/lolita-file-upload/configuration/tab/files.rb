@@ -75,7 +75,7 @@ module Lolita
 
         def set_default_association
           @association=self.dbi.associations.detect{|k,assoc| 
-            !assoc.klass.uploaders.empty? 
+            !assoc.options[:polymorphic] && !assoc.klass.uploaders.empty?
           }
           if @association
             @association=@association.last
