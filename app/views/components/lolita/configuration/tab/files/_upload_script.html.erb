@@ -1,11 +1,11 @@
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/overcast/jquery-ui.css" type="text/css" />
-  <link rel="stylesheet" href="/stylesheets/lolita/upload/jquery.ui.plupload.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/lolita/upload/jquery.ui.plupload.css" type="text/css" />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
-  <script type="text/javascript" src="/javascripts/lolita/upload/plupload.full.js"></script>
-  <script type="text/javascript" src="/javascripts/lolita/upload/jquery.ui.plupload.js"></script>
+  <script type="text/javascript" src="/assets/lolita/upload/plupload.full.js"></script>
+  <script type="text/javascript" src="/assets/lolita/upload/jquery.ui.plupload.js"></script>
 <% unless Lolita.locale.to_s.downcase=="en" %>
-  <script type="text/javascript" src="/javascripts/lolita/upload/I18n/<%=Lolita.locale%>.js"></script>
+  <script type="text/javascript" src="/assets/lolita/upload/I18n/<%=Lolita.locale%>.js"></script>
 <% end %>
 <script type="text/javascript">  
  $(function(){  
@@ -42,7 +42,7 @@
     },
 
     // Flash settings
-    flash_swf_url : '/javascripts/lolita/upload/plupload.flash.swf',
+    flash_swf_url : '/assets/lolita/upload/plupload.flash.swf',
     init:{
       FileUploaded:function(uploader, file, info){
         <% if tab.association_type == :many %>

@@ -9,7 +9,7 @@ File upload gem for Lolita.
 * cd your_project_path
 * rails g lolita_file_upload:install
 
-Install will copy all assets and migrations to your project.
+Install will copy migration to your project.
 If you update to newest version of gem, than run <i>rails g lolita_file_upload:assets</i>
 
 ==Configuration
