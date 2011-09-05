@@ -70,7 +70,12 @@ module Lolita
         private
 
         def all_text_fields
-          self.association_dbi.fields.collect{|field| field[:name] if field[:type] == "string"}.compact
+          adapter = Lolita::DBI::Base.create(self.association.klass)
+          @text_fields ||=adapter.fields.collect{|field| 
+            if field.type == "string"
+              field.name
+            end
+          }.compact
         end
 
         def set_default_association
