@@ -24,6 +24,15 @@ module Lolita
   end
 end
 
+Lolita::Hooks.component(:"/lolita/configuration/tab/form").around do
+  tab = self.component_locals[:tab]
+  if tab.is_a?(Lolita::Configuration::Tab::Files)
+    self.render_component(*tab.build)
+  else
+    let_content
+  end
+end
+
 require 'lolita-file-upload/module'
 
 if defined?(Rails)
