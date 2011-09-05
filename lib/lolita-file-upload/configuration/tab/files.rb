@@ -48,7 +48,7 @@ module Lolita
         def association name=nil
           if name
             @association = self.dbi.associations[name]
-            @association_type = self.dbi.association_macro(@association)
+            @association_type = @association.macro
             @uploader = @association.klass.uploaders.keys.first
           end
           @association
@@ -74,13 +74,13 @@ module Lolita
         end
 
         def set_default_association
-          @association=self.dbi.associations.detect{|k,assoc| 
-            !assoc.options[:polymorphic] && !assoc.klass.uploaders.empty?
+          @association=self.dbi.associations.detect{|name,assoc| 
+            !assoc.polymorphic? && !assoc.klass.uploaders.empty?
           }
           if @association
-            @association=@association.last
-            @association_type = self.dbi.association_macro(@association)
-            @uploader = @association.klass.uploaders.keys.first
+            @association = @association.last
+            @association_type = @association.macro
+            @uploader = @association.klass.uploaders.keys.first #FIXME what to do when there is more than one uploader
           end
         end
 
