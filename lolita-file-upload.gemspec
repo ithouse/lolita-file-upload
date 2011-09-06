@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "lolita-file-upload"
-  s.version = "0.4.3"
+  s.version = "0.4.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ITHouse", "Arturs Meisters"]
@@ -24,8 +24,8 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "app/assets/images/lolita/file-upload/delete-picture.png",
-    "app/assets/images/lolita/file-upload/edit.png",
+    "app/assets/images/lolita/upload/delete-picture.png",
+    "app/assets/images/lolita/upload/edit.png",
     "app/controllers/lolita/uploads_controller.rb",
     "app/models/lolita/upload/file.rb",
     "app/uploaders/file_uploader.rb",
@@ -111,11 +111,11 @@ Gem::Specification.new do |s|
     "vendor/assets/images/lolita/upload/plupload/transp50.png",
     "vendor/assets/javascripts/lolita/upload/I18n/lv.js",
     "vendor/assets/javascripts/lolita/upload/I18n/ru.js",
-    "vendor/assets/javascripts/lolita/upload/application.js",
+    "vendor/assets/javascripts/lolita/upload/application_vendor.js",
     "vendor/assets/javascripts/lolita/upload/jquery.ui.plupload.js",
     "vendor/assets/javascripts/lolita/upload/plupload.flash.swf",
     "vendor/assets/javascripts/lolita/upload/plupload.full.js",
-    "vendor/assets/stylesheets/lolita/upload/application.css",
+    "vendor/assets/stylesheets/lolita/upload/application_vendor.css",
     "vendor/assets/stylesheets/lolita/upload/jquery-ui/overcast/jquery-ui-1.8.16.custom.css.erb",
     "vendor/assets/stylesheets/lolita/upload/jquery.ui.plupload.css.erb",
     "vendor/assets/stylesheets/lolita/upload/plupload.queue.css"
@@ -133,27 +133,30 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<lolita>, ["= 3.2.0.rc2"])
       s.add_runtime_dependency(%q<carrierwave>, ["~> 0.5.7"])
       s.add_runtime_dependency(%q<mini_magick>, [">= 0"])
-      s.add_development_dependency(%q<cucumber>, ["~> 0.10"])
-      s.add_development_dependency(%q<cucumber-rails>, ["~> 0.5.2"])
+      s.add_runtime_dependency(%q<jquery-rails>, [">= 1.0.12"])
+      s.add_development_dependency(%q<cucumber>, ["~> 1.0"])
+      s.add_development_dependency(%q<cucumber-rails>, ["~> 1.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.5"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.6"])
     else
       s.add_dependency(%q<lolita>, ["= 3.2.0.rc2"])
       s.add_dependency(%q<carrierwave>, ["~> 0.5.7"])
       s.add_dependency(%q<mini_magick>, [">= 0"])
-      s.add_dependency(%q<cucumber>, ["~> 0.10"])
-      s.add_dependency(%q<cucumber-rails>, ["~> 0.5.2"])
+      s.add_dependency(%q<jquery-rails>, [">= 1.0.12"])
+      s.add_dependency(%q<cucumber>, ["~> 1.0"])
+      s.add_dependency(%q<cucumber-rails>, ["~> 1.0"])
       s.add_dependency(%q<bundler>, ["~> 1.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.5"])
+      s.add_dependency(%q<jeweler>, ["~> 1.6"])
     end
   else
     s.add_dependency(%q<lolita>, ["= 3.2.0.rc2"])
     s.add_dependency(%q<carrierwave>, ["~> 0.5.7"])
     s.add_dependency(%q<mini_magick>, [">= 0"])
-    s.add_dependency(%q<cucumber>, ["~> 0.10"])
-    s.add_dependency(%q<cucumber-rails>, ["~> 0.5.2"])
+    s.add_dependency(%q<jquery-rails>, [">= 1.0.12"])
+    s.add_dependency(%q<cucumber>, ["~> 1.0"])
+    s.add_dependency(%q<cucumber-rails>, ["~> 1.0"])
     s.add_dependency(%q<bundler>, ["~> 1.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.5"])
+    s.add_dependency(%q<jeweler>, ["~> 1.6"])
   end
 end
 
