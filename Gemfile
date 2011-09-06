@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "lolita", "~>3.2.0.rc2"
+gem "lolita", "3.2.0.rc2"
 gem "carrierwave", "~> 0.5.7"
 gem "mini_magick"
 group :test do
