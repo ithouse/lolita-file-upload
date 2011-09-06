@@ -15,9 +15,9 @@ group :test do
 end
 
 group :development do
-  gem "cucumber", "~> 0.10"
-  gem "cucumber-rails", "~> 0.5.2"
+  gem "cucumber", "~> 1.0"
+  gem "cucumber-rails", "~> 1.0"
   gem "bundler", "~> 1.0"
-  gem "jeweler", "~> 1.5"
+  gem "jeweler", "~> 1.6"
 end
 
