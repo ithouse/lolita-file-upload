@@ -3,6 +3,7 @@ source "http://rubygems.org"
 gem "lolita", "3.2.0.rc2"
 gem "carrierwave", "~> 0.5.7"
 gem "mini_magick"
+gem 'jquery-rails', '>= 1.0.12'
 group :test do
   gem "rspec-rails", "~> 2.6"
   gem "ffaker"

@@ -1,7 +1,6 @@
   <%= stylesheet_link_tag "lolita/upload/jquery-ui/overcast/jquery-ui-1.8.16.custom.css" %>
-  <%= stylesheet_link_tag "lolita/upload/application.css" %>
-  <%= javascript_include_tag "jquery-ui" %>
-  <%= javascript_include_tag "lolita/upload/application.js" %>
+  <%= stylesheet_link_tag "lolita/upload/application_vendor.css" %>
+  <%= javascript_include_tag "lolita/upload/application_vendor.js" %>
 <% unless Lolita.locale.to_s.downcase=="en" %>
   <%= javascript_include_tag "lolita/upload/I18n/#{Lolita.locale}.js"%>
 <% end %>
