@@ -3,7 +3,12 @@ if defined?(Rails)
   module LolitaFileUpload
     class Engine < Rails::Engine
       initializer "remove assets directories from pipeline" do |app|
-       app.config.assets.precompile += %w(lolita/upload/application_vendor.js lolita/upload/application_vendor.css)
+       app.config.assets.precompile += [
+         "lolita/upload/application_vendor.js",
+         "lolita/upload/application_vendor.css",
+         "lolita/upload/I18n/lv.js",
+         "lolita/upload/I18n/ru.js"
+        ]
       end
     end
   end
