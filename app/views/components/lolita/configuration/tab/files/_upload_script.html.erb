@@ -1,11 +1,9 @@
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/overcast/jquery-ui.css" type="text/css" />
-  <link rel="stylesheet" href="/assets/lolita/upload/jquery.ui.plupload.css" type="text/css" />
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
-  <script type="text/javascript" src="/assets/lolita/upload/plupload.full.js"></script>
-  <script type="text/javascript" src="/assets/lolita/upload/jquery.ui.plupload.js"></script>
+  <%= stylesheet_link_tag "lolita/upload/jquery-ui-1.8.16.custom.css" %>
+  <%= javascript_include_tag "jquery-ui" %>
+  <%= javascript_include_tag "lolita/upload/application.js" %>
+  <%= stylesheet_link_tag "lolita/upload/application.css" %>
 <% unless Lolita.locale.to_s.downcase=="en" %>
-  <script type="text/javascript" src="/assets/lolita/upload/I18n/<%=Lolita.locale%>.js"></script>
+  <%= javascript_include_tag "lolita/upload/I18n/#{Lolita.locale}.js"%>
 <% end %>
 <script type="text/javascript">  
  $(function(){  
@@ -42,7 +40,7 @@
     },
 
     // Flash settings
-    flash_swf_url : '/assets/lolita/upload/plupload.flash.swf',
+    flash_swf_url : "<%=asset_path("lolita/upload/plupload.flash.swf")%>",
     init:{
       FileUploaded:function(uploader, file, info){
         <% if tab.association_type == :many %>
