@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "lolita-file-upload"
-  s.version = "0.4.0"
+  s.version = "0.4.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ITHouse", "Arturs Meisters"]
-  s.date = "2011-09-05"
+  s.date = "2011-09-06"
   s.description = "File upload gem for Lolita with with fulll integration - models, controller, views"
   s.email = "support@ithouse.lv"
   s.extra_rdoc_files = [
@@ -85,6 +85,20 @@ Gem::Specification.new do |s|
     "test_orm/support.rb",
     "test_orm/uploaders/list_image_uploader.rb",
     "test_orm/uploaders/main_image_uploader.rb",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-bg_flat_0_aaaaaa_40x100.png",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-bg_flat_0_eeeeee_40x100.png",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-bg_flat_55_c0402a_40x100.png",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-bg_flat_55_eeeeee_40x100.png",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-bg_glass_100_f8f8f8_1x400.png",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-bg_glass_35_dddddd_1x400.png",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-bg_glass_60_eeeeee_1x400.png",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-bg_inset-hard_75_999999_1x100.png",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-bg_inset-soft_50_c9c9c9_1x100.png",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-icons_3383bb_256x240.png",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-icons_454545_256x240.png",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-icons_70b2e1_256x240.png",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-icons_999999_256x240.png",
+    "vendor/assets/images/lolita/upload/jquery-ui/overcast/images/ui-icons_fbc856_256x240.png",
     "vendor/assets/images/lolita/upload/plupload/backgrounds.gif",
     "vendor/assets/images/lolita/upload/plupload/buttons-disabled.png",
     "vendor/assets/images/lolita/upload/plupload/buttons.png",
@@ -97,10 +111,13 @@ Gem::Specification.new do |s|
     "vendor/assets/images/lolita/upload/plupload/transp50.png",
     "vendor/assets/javascripts/lolita/upload/I18n/lv.js",
     "vendor/assets/javascripts/lolita/upload/I18n/ru.js",
+    "vendor/assets/javascripts/lolita/upload/application.js",
     "vendor/assets/javascripts/lolita/upload/jquery.ui.plupload.js",
     "vendor/assets/javascripts/lolita/upload/plupload.flash.swf",
     "vendor/assets/javascripts/lolita/upload/plupload.full.js",
-    "vendor/assets/stylesheets/lolita/upload/jquery.ui.plupload.css",
+    "vendor/assets/stylesheets/lolita/upload/application.css",
+    "vendor/assets/stylesheets/lolita/upload/jquery-ui/overcast/jquery-ui-1.8.16.custom.css.erb",
+    "vendor/assets/stylesheets/lolita/upload/jquery.ui.plupload.css.erb",
     "vendor/assets/stylesheets/lolita/upload/plupload.queue.css"
   ]
   s.homepage = "http://github.com/ithouse/lolita-file-upload"
@@ -113,7 +130,7 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<lolita>, ["~> 3.2.0.rc1"])
+      s.add_runtime_dependency(%q<lolita>, ["~> 3.2.0.rc2"])
       s.add_runtime_dependency(%q<carrierwave>, ["~> 0.5.7"])
       s.add_runtime_dependency(%q<mini_magick>, [">= 0"])
       s.add_development_dependency(%q<cucumber>, ["~> 0.10"])
@@ -121,7 +138,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bundler>, ["~> 1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5"])
     else
-      s.add_dependency(%q<lolita>, ["~> 3.2.0.rc1"])
+      s.add_dependency(%q<lolita>, ["~> 3.2.0.rc2"])
       s.add_dependency(%q<carrierwave>, ["~> 0.5.7"])
       s.add_dependency(%q<mini_magick>, [">= 0"])
       s.add_dependency(%q<cucumber>, ["~> 0.10"])
@@ -130,7 +147,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jeweler>, ["~> 1.5"])
     end
   else
-    s.add_dependency(%q<lolita>, ["~> 3.2.0.rc1"])
+    s.add_dependency(%q<lolita>, ["~> 3.2.0.rc2"])
     s.add_dependency(%q<carrierwave>, ["~> 0.5.7"])
     s.add_dependency(%q<mini_magick>, [">= 0"])
     s.add_dependency(%q<cucumber>, ["~> 0.10"])
