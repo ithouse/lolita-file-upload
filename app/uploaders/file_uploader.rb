@@ -1,3 +1,4 @@
+require 'fileutils'
 class FileUploader < CarrierWave::Uploader::Base
     include CarrierWave::MiniMagick
     storage :file
@@ -27,7 +28,7 @@ class FileUploader < CarrierWave::Uploader::Base
 
     def delete_empty_upstream_dirs
       path = ::File.expand_path(store_dir, root)
-      Dir.delete(path) # fails if path not empty dir
+      FileUtils.rm_rf path # always remove
       
      # path = ::File.expand_path(base_store_dir, root)
      # Dir.delete(path) # fails if path not empty dir
