@@ -24,9 +24,9 @@
 %div{:id=>"fixed-gallery"}
   - resource_class.lolita.tabs.select{|tab| tab.type == :files}.each do |tab|
     %h1= tab.title
-    - files = tab.association_type == :one ? [resource.send(tab.association.name)].compact :  resource.send(tab.association.name)
-    - files.each do |file|
-      - if file.send(tab.uploader).to_s =~ /(jpg|jpeg|png|gif)$/i 
-        - url = file.send(tab.uploader).normalized.blank? ? file.send(tab.uploader).url : file.send(tab.uploader).normalized.url
-        = image_tag(url)
+    / - files = tab.association_type == :one ? [resource.send(tab.association.name)].compact :  resource.send(tab.association.name)
+    / - files.each do |file|
+    /   - if file.send(tab.uploader).to_s =~ /(jpg|jpeg|png|gif)$/i 
+    /     - url = file.send(tab.uploader).normalized.blank? ? file.send(tab.uploader).url : file.send(tab.uploader).normalized.url
+    /     = #image_tag(url)
   %button{:onclick=>"$('#fixed-gallery').hide();"}Aizvērt
