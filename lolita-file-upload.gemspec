@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "lolita-file-upload"
-  s.version = "0.4.8"
+  s.version = "0.4.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ITHouse", "Arturs Meisters"]
-  s.date = "2011-10-04"
+  s.date = "2011-10-28"
   s.description = "File upload gem for Lolita with with fulll integration - models, controller, views"
   s.email = "support@ithouse.lv"
   s.extra_rdoc_files = [
