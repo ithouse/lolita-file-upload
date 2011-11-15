@@ -18,7 +18,7 @@ module Lolita
 
         def create_menu_migrations
           begin
-            migration_template "migrations/migration.rb", "db/migrate/create_lolita_upload_files.rb" 
+            migration_template "migration.rb", "db/migrate/create_lolita_upload_files.rb" 
           rescue Exception => e
             puts e
           end
