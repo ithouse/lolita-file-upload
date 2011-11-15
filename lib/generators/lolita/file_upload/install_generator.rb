@@ -1,3 +1,5 @@
+require 'rails/generators'
+require 'rails/generators/migration'   
 module Lolita
   module FileUpload
     module Generators
