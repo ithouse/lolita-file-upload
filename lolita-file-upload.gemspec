@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "lolita-file-upload"
-  s.version = "0.4.9"
+  s.version = "0.4.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ITHouse", "Arturs Meisters"]
-  s.date = "2011-10-28"
+  s.date = "2011-11-15"
   s.description = "File upload gem for Lolita with with fulll integration - models, controller, views"
   s.email = "support@ithouse.lv"
   s.extra_rdoc_files = [
@@ -50,8 +50,8 @@ Gem::Specification.new do |s|
     "features/support/env.rb",
     "features/support_byte_converter.feature",
     "features/upload_file.feature",
-    "lib/generators/lolita_file_upload/install_generator.rb",
-    "lib/generators/lolita_file_upload/templates/migration.rb",
+    "lib/generators/lolita/file_upload/install_generator.rb",
+    "lib/generators/lolita/file_upload/templates/migration.rb",
     "lib/lolita-file-upload.rb",
     "lib/lolita-file-upload/configuration/tab/files.rb",
     "lib/lolita-file-upload/module.rb",
@@ -130,7 +130,7 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<lolita>, ["~> 3.2.0.rc.3"])
+      s.add_runtime_dependency(%q<lolita>, ["~> 3.2.0.rc.6"])
       s.add_runtime_dependency(%q<carrierwave>, ["~> 0.5.7"])
       s.add_runtime_dependency(%q<mini_magick>, [">= 0"])
       s.add_runtime_dependency(%q<jquery-rails>, [">= 1.0.12"])
@@ -139,7 +139,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bundler>, ["~> 1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6"])
     else
-      s.add_dependency(%q<lolita>, ["~> 3.2.0.rc.3"])
+      s.add_dependency(%q<lolita>, ["~> 3.2.0.rc.6"])
       s.add_dependency(%q<carrierwave>, ["~> 0.5.7"])
       s.add_dependency(%q<mini_magick>, [">= 0"])
       s.add_dependency(%q<jquery-rails>, [">= 1.0.12"])
@@ -149,7 +149,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jeweler>, ["~> 1.6"])
     end
   else
-    s.add_dependency(%q<lolita>, ["~> 3.2.0.rc.3"])
+    s.add_dependency(%q<lolita>, ["~> 3.2.0.rc.6"])
     s.add_dependency(%q<carrierwave>, ["~> 0.5.7"])
     s.add_dependency(%q<mini_magick>, [">= 0"])
     s.add_dependency(%q<jquery-rails>, [">= 1.0.12"])
