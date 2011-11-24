@@ -77,7 +77,7 @@
   });
 
 	$("#<%= tab.name %>").bind("tab.toggle", function(){
-		var uploader = $("#file_upload_container_files").plupload('getUploader');
+		var uploader = $("#<%=container%>").plupload('getUploader');
 		uploader.refresh();		
 	})
 
