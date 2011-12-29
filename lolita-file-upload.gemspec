@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ITHouse", "Arturs Meisters"]
-  s.date = "2011-12-20"
+  s.date = "2011-12-29"
   s.description = "File upload gem for Lolita with with fulll integration - models, controller, views"
   s.email = "support@ithouse.lv"
   s.extra_rdoc_files = [
@@ -108,7 +108,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/ithouse/lolita-file-upload"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.13"
   s.summary = "File upload gem for Lolita CMS"
 
   if s.respond_to? :specification_version then
