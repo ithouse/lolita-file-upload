@@ -1,0 +1,20 @@
+<div class="file-item" id="upload_<%=tab.association.name%>_item_<%=file.id%>" data-<%=tab.association.name%>-id="<%=file.id%>">
+  <div class="window">
+    <% if file.send(tab.uploader).to_s =~ /(jpg|jpeg|png|gif)$/i %>
+      <% url = file.send(tab.uploader).normalized.blank? ? file.send(tab.uploader).url : file.send(tab.uploader).normalized.url %>
+      <%#= link_to image_tag(url, :style=>"width:300px; height 160px;"), url %>
+      <%= image_tag url %>
+    <% else %>
+      <%#= link_to file.send(tab.uploader).url, file.send(tab.uploader).url %>
+      <%= file.send(tab.uploader).url %>
+    <% end %>
+    <div class="links">
+      <%= link_to t("lolita.tabs.images.edit"),send(:"edit_lolita_#{tab.dbi.klass.model_name.singular}_upload_path", "#{tab.dbi.klass.model_name.singular}_id" => (resource.nil? || resource.new_record?) ? 0 : resource.id, :association => tab.association.name, :id=>file.id),:remote=>true, :class => "edit_link" %>
+      <%= link_to t("lolita.tabs.images.delete"),send(:"lolita_#{tab.dbi.klass.model_name.singular}_upload_path", "#{tab.dbi.klass.model_name.singular}_id" => (resource.nil? || resource.new_record?) ? 0 : resource.id, :association => tab.association.name, :id=>file.id),:method=>:delete,:remote=>true,:confirm=>"Are you sure?", :class => "delete_link" %>
+    </div>
+  </div>
+  <p><%= File.basename(url) %></p>
+</div>
+<script>
+  $('#fixed-gallery').append("<%=escape_javascript(render_component(*tab.build("",:file,:file=>file,:format=>"html")))%>");
+</script>

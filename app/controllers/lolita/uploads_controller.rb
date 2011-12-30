@@ -2,16 +2,20 @@ class Lolita::UploadsController < ApplicationController
   include Lolita::Controllers::UserHelpers
   include Lolita::Controllers::InternalHelpers
   before_filter :authenticate_lolita_user!
-  before_filter :set_tab, :only=>[:edit,:update,:destroy,:create]
+  before_filter :set_tab, :only=>[:index,:edit,:update,:destroy,:create]
   before_filter :set_resource, :only=>[:create,:edit,:update,:destroy]
   before_filter :set_file, :only=>[:edit,:update,:destroy,:create]
 
   respond_to :js,:html
 
+  def index
+    render_component *@tab.build("",:list,:file=>@file)
+  end
+
   def create
     @file.send(:"#{@tab.uploader}=",params[:file])
     @file.save! 
-    render_component *@tab.build("",:row,:file=>@file, :format => "html")
+    render_component *@tab.build("",:image,:file=>@file, :format => "html")
   end
 
   def edit

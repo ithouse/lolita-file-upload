@@ -1,1 +1,1 @@
-$("#upload_<%=tab.association.name%>_row_<%=file.id%>").html("<%=escape_javascript(render_component(*tab.build("",:list_form,:file=>file,:format=>"html")))%>");
+$("#upload_<%=tab.association.name%>_item_<%=file.id%>").closest(".lolita-file-upload-form").hide().after("<%=escape_javascript(render_component(*tab.build("",:form,:file=>file,:format=>"html")))%>");

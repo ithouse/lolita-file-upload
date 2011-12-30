@@ -43,11 +43,11 @@
     init:{
       FileUploaded:function(uploader, file, info){
         <% if tab.association_type == :many %>
-          $("#file_list_for_<%=tab.association.name%>>tbody").append(info.response)
+          $("#file_list_for_<%=tab.association.name%>").append(info.response)
         <% else %>
           uploader.splice(0,10);
-          $("#file_list_for_<%=tab.association.name%>>tbody").html("")
-          $("#file_list_for_<%=tab.association.name%>>tbody").append(info.response)
+          $("#file_list_for_<%=tab.association.name%>").html("")
+          $("#file_list_for_<%=tab.association.name%>").append(info.response)
         <% end %>
 
         <% if tab.association_type == :many %>
@@ -62,7 +62,7 @@
         })
 
         var new_ids=[]
-        $("#file_list_for_<%=tab.association.name%> tr[data-<%=tab.association.name%>-id]").each(function(){
+        $("#file_list_for_<%=tab.association.name%> .file-item[data-<%=tab.association.name%>-id]").each(function(){
           if($.inArray($(this).attr("data-<%=tab.association.name%>-id"),existing_ids)<0){
             new_ids.push($(this).attr("data-<%=tab.association.name%>-id"))
           }
