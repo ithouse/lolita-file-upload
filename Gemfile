@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
-gem "lolita", "~>3.2.0.rc.3"
-gem "carrierwave", "~> 0.5.7"
+gem "lolita", "~>3.2.0.rc.6"
+gem "carrierwave", "~> 0.5.8"
 gem "mini_magick"
 gem 'jquery-rails', '>= 1.0.12'
 group :test do

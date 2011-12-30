@@ -2,7 +2,7 @@ if defined?(Rails)
   require "lolita-file-upload/rails/file_upload_routes"
   module LolitaFileUpload
     class Engine < Rails::Engine
-      initializer "remove assets directories from pipeline" do |app|
+      initializer "add assets directories from pipeline", :group => :all do |app|
        app.config.assets.precompile += [
          "lolita/upload/application_vendor.js",
          "lolita/upload/application_vendor.css",
