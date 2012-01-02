@@ -1,2 +1,5 @@
-$("#upload_<%=tab.association.name%>_row_<%=file.id%>").remove()
+$("#upload_<%=tab.association.name%>_item_<%=file.id%>").remove()
 $("input.<%=tab.association.name%>-ids[value=<%=file.id%>]").remove()
+//return to list
+$("#<%= tab.association.name %>_form").show()
+$("#<%= tab.association.name %>_form").siblings(".edit-file-form").remove()

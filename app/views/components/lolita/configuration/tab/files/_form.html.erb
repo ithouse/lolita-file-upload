@@ -1,7 +1,24 @@
-<%= form_tag send(:"lolita_#{resource_class.model_name.singular}_upload_path", "#{resource_class.model_name.singular}_id" => resource.id, :association => tab.association.name, :id=>file.id),:method=>:put,:remote=>true,:id=>"edit_#{tab.association.name}_#{file.id}" do %>
-  <% tab.editable_fields.each do |name| %>
-    <%= label_tag "file[#{name}]", file.class.human_attribute_name(name) %>
-    <%= text_field_tag "file[#{name}]",file.send(name) %>
-    <br />
-  <% end %>
+<%= form_tag send(:"lolita_#{resource_class.model_name.singular}_upload_path", "#{resource_class.model_name.singular}_id" => resource.id, :association => tab.association.name, :id=>file.id),:method=>:put,:remote=>true,:id=>"edit_#{tab.association.name}_#{file.id}", :class => "edit-file-form" do %>
+  <div class="file-editor">
+    <% url = file.send(tab.uploader).normalized.blank? ? file.send(tab.uploader).url : file.send(tab.uploader).normalized.url %>
+    <%= image_tag url, :class => "editable-image" %>
+    <div class="fields"> 
+      <% tab.editable_fields.each do |name| %>
+        <%= label_tag "file[#{name}]", file.class.human_attribute_name(name) %>
+        <%= text_field_tag "file[#{name}]",file.send(name) %>
+        <br />
+      <% end %>
+    </div>
+    <div class="action-links">
+      <div class="navigation">
+        <%= link_to t("lolita.tabs.images.back"), send(:"lolita_#{tab.dbi.klass.model_name.singular}_uploads_path"), :remote => true, :class => "back" %>
+        <%#= link_to t("lolita.tabs.images.previous"), "#", :class => "previous" %>
+        <%#= link_to t("lolita.tabs.images.next"), "#", :class => "next" %>
+      </div>
+      <div class="actions">
+        <%= link_to t("lolita.tabs.images.delete"), send(:"lolita_#{tab.dbi.klass.model_name.singular}_upload_path", "#{tab.dbi.klass.model_name.singular}_id" => (resource.nil? || resource.new_record?) ? 0 : resource.id, :association => tab.association.name, :id=>file.id),:method=>:delete,:remote=>true,:confirm=>"Are you sure?", :class => "delete" %>
+        <%= link_to t("lolita.tabs.images.save"), "#", :class => "save" %>
+      </div>
+    </div>
+  </div>
 <% end %>

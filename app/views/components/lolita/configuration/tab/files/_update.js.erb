@@ -1,1 +1,1 @@
-$("#upload_<%=tab.association.name%>_row_<%=file.id%>").html("<%=escape_javascript(render_component(*tab.build("",:cells,:file=>file,:format=>"html")))%>")
+$("#edit_<%=tab.association.name%>_<%=file.id%>").replaceWith("<%=escape_javascript(render_component(*tab.build("",:form,:file=>file,:format=>"html")))%>")

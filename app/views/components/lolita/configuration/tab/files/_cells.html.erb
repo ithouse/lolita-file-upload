@@ -7,6 +7,6 @@
   <% end %>
 </td>
 <td style="margin-top: 3px; border-bottom: 2px solid #E1E1E1; width: 55px;text-align: center; font-size: 14px; padding: 7px 20px; vertical-align: middle;">
-  <%= link_to  image_tag("lolita/upload/edit.png"),send(:"edit_lolita_#{tab.dbi.klass.model_name.singular}_upload_path", "#{tab.dbi.klass.model_name.singular}_id" => (resource.nil? || resource.new_record?) ? 0 : resource.id, :association => tab.association.name, :id=>file.id),:remote=>true %>
+  <%= link_to image_tag("lolita/upload/edit.png"),send(:"edit_lolita_#{tab.dbi.klass.model_name.singular}_upload_path", "#{tab.dbi.klass.model_name.singular}_id" => (resource.nil? || resource.new_record?) ? 0 : resource.id, :association => tab.association.name, :id=>file.id),:remote=>true %>
   <%= link_to image_tag("lolita/upload/delete-picture.png"),send(:"lolita_#{tab.dbi.klass.model_name.singular}_upload_path", "#{tab.dbi.klass.model_name.singular}_id" => (resource.nil? || resource.new_record?) ? 0 : resource.id, :association => tab.association.name, :id=>file.id),:method=>:delete,:remote=>true,:confirm=>"Are you sure?" %>
 </td>

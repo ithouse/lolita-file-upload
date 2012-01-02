@@ -6,3 +6,10 @@ lv:
     tabs:
       titles:
         files: "Faili"
+      images:
+        edit: "Labot"
+        delete: "Dzēst"
+        back: "Atpakaļ"
+        previous: "Iepriekšējais"
+        next: "Nākamais"
+        save: "Saglabāt"
