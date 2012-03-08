@@ -1,6 +1,6 @@
 # append route
 Lolita.add_module Lolita::FileUpload, :nested=>true,:route=>lambda{|resource|
-  if resource && resource.lolita.tabs.by_type(:files)
+  if resource && resource.respond_to?(:lolita) && resource.lolita.tabs.by_type(:files)
     return :file_upload
   end
 }
