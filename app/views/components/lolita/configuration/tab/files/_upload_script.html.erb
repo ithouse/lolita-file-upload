@@ -30,7 +30,7 @@
       "<%="upload[#{tab.association.options[:as]}_type]"%>": "<%=resource.class%>",
       "<%="upload[#{tab.association.options[:as]}_id]"%>": "<%=resource.new_record? ? 0 : resource.id%>"
       <% else -%>
-      "<%="upload[#{lolita_mapping.singular}_id]"%>": "<%=resource.new_record? ? 0 : resource.id%>"
+      "<%="upload[#{tab.association.foreign_key}]"%>": "<%=resource.new_record? ? 0 : resource.id%>"
       <% end -%>
     },
     headers:{
