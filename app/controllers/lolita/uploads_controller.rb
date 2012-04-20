@@ -12,25 +12,25 @@ class Lolita::UploadsController < ApplicationController
   end
 
   def create
-    can?(:create,@file.class)
+    authorization_proxy.can?(:create,@file.class)
     @file.send(:"#{@tab.uploader}=",params[:file])
     @file.save! 
     render_component *@tab.build("",:image,:file=>@file, :format => "html")
   end
 
   def edit
-    can?(:update,@file.class)
+    authorization_proxy.can?(:update,@file.class)
     render_component *@tab.build("",:edit,:file=>@file)
   end
 
   def update
-    can?(:update,@file.class)
+    authorization_proxy.can?(:update,@file.class)
     @file.update_attributes!(params[:file])
     render_component *@tab.build("",:update,:file=>@file)
   end
 
   def destroy
-    can?(:destroy,@file.class)
+    authorization_proxy.can?(:destroy,@file.class)
     @file.destroy
     render_component *@tab.build("",:destroy,:file=>@file)
   end
