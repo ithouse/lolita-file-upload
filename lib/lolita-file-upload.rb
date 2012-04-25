@@ -33,6 +33,15 @@ Lolita::Hooks.component(:"/lolita/configuration/tab/form").around do
   end
 end
 
+Lolita::Hooks.component(:"/lolita/configuration/field/string/text/display").around do
+  field = self.component_locals[:field]
+  if field.dbi.klass.lolita.tabs.by_type(:files)
+    self.render_component "lolita/configuration/field/string/text_gallery", :display, :field => field
+  else
+    let_content
+  end
+end
+
 require 'lolita-file-upload/module'
 
 if defined?(Rails)

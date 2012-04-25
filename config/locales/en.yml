@@ -27,3 +27,5 @@ en:
         gigabyte:
           one: gigabyte
           other: gigabytes
+    tinymce:
+      gallery: Gallery

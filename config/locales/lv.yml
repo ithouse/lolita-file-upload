@@ -13,3 +13,5 @@ lv:
         previous: "Iepriekšējais"
         next: "Nākamais"
         save: "Saglabāt"
+    tinymce:
+      gallery: Galerija
