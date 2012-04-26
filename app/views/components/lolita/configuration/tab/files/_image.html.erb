@@ -13,7 +13,7 @@
       <%= link_to t("lolita.tabs.images.delete"),send(:"lolita_#{tab.dbi.klass.model_name.singular}_upload_path", "#{tab.dbi.klass.model_name.singular}_id" => (resource.nil? || resource.new_record?) ? 0 : resource.id, :association => tab.association.name, :id=>file.id),:method=>:delete,:remote=>true,:confirm=>"Are you sure?", :class => "delete_link" %>
     </div>
   </div>
-  <p><%= File.basename(url) %></p>
+  <p><%= File.basename(file.send(tab.uploader).url) %></p>
 </div>
 <script>
   $('#fixed-gallery').append("<%=escape_javascript(render_component(*tab.build("",:file,:file=>file,:format=>"html")))%>");
