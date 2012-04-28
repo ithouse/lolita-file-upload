@@ -67,7 +67,7 @@
           }
         })
         for(var i in new_ids){
-          $("#<%=tab.association.name%>_form").append('<input type="hidden" class="<%=tab.association.name%>-ids" name="'+ids+'" value="'+new_ids[i]+'" />')
+          $(".tabs form:first").append('<input type="hidden" class="<%=tab.association.name%>-ids" name="'+ids+'" value="'+new_ids[i]+'" />')
         }
 
       }  

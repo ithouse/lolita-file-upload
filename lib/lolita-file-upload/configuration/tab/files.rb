@@ -14,6 +14,7 @@ module Lolita
         # And block.
   	  	def initialize(dbi,*args,&block)
           @type=:files
+          @dissociate = true
   	  		@filters=[]
           @dbi=dbi
           @editable_fields=[]
