@@ -1,0 +1,3 @@
+= image_tag(field.preview_image(current_form.object)) if field.has_image?(current_form.object) 
+= current_form.file_field field.name
+= current_form.hidden_field field.cache_name

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ITHouse", "Arturs Meisters"]
-  s.date = "2011-12-29"
+  s.date = "2012-08-28"
   s.description = "File upload gem for Lolita with with fulll integration - models, controller, views"
   s.email = "support@ithouse.lv"
   s.extra_rdoc_files = [
@@ -24,11 +24,17 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "app/assets/images/lolita/upload/delete-picture.png",
+    "app/assets/images/lolita/tinymce_gallery.png",
+    "app/assets/images/lolita/upload/back.png",
+    "app/assets/images/lolita/upload/delete.png",
     "app/assets/images/lolita/upload/edit.png",
+    "app/assets/images/lolita/upload/next.png",
+    "app/assets/images/lolita/upload/prev.png",
+    "app/assets/images/lolita/upload/save.png",
     "app/controllers/lolita/uploads_controller.rb",
     "app/models/lolita/upload/file.rb",
     "app/uploaders/file_uploader.rb",
+    "app/views/components/lolita/configuration/field/string/text_gallery/_display.html.haml",
     "app/views/components/lolita/configuration/tab/files/_cells.html.erb",
     "app/views/components/lolita/configuration/tab/files/_destroy.js.erb",
     "app/views/components/lolita/configuration/tab/files/_display.html.erb",
@@ -36,7 +42,9 @@ Gem::Specification.new do |s|
     "app/views/components/lolita/configuration/tab/files/_file.html.erb",
     "app/views/components/lolita/configuration/tab/files/_fixed_gallery.html.haml",
     "app/views/components/lolita/configuration/tab/files/_form.html.erb",
+    "app/views/components/lolita/configuration/tab/files/_image.html.erb",
     "app/views/components/lolita/configuration/tab/files/_list.html.erb",
+    "app/views/components/lolita/configuration/tab/files/_list.js.erb",
     "app/views/components/lolita/configuration/tab/files/_list_form.html.erb",
     "app/views/components/lolita/configuration/tab/files/_row.html.erb",
     "app/views/components/lolita/configuration/tab/files/_update.js.erb",
@@ -103,12 +111,13 @@ Gem::Specification.new do |s|
     "vendor/assets/javascripts/lolita/upload/plupload.full.js",
     "vendor/assets/stylesheets/lolita/upload/application_vendor.css",
     "vendor/assets/stylesheets/lolita/upload/jquery.ui.plupload.css.erb",
+    "vendor/assets/stylesheets/lolita/upload/lolita_file_upload.css.scss",
     "vendor/assets/stylesheets/lolita/upload/plupload.queue.css"
   ]
   s.homepage = "http://github.com/ithouse/lolita-file-upload"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.13"
+  s.rubygems_version = "1.8.24"
   s.summary = "File upload gem for Lolita CMS"
 
   if s.respond_to? :specification_version then
@@ -116,7 +125,7 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<lolita>, ["~> 3.2.0.rc.6"])
-      s.add_runtime_dependency(%q<carrierwave>, ["~> 0.5.8"])
+      s.add_runtime_dependency(%q<carrierwave>, ["~> 0.6.0"])
       s.add_runtime_dependency(%q<mini_magick>, [">= 0"])
       s.add_runtime_dependency(%q<jquery-rails>, [">= 1.0.12"])
       s.add_development_dependency(%q<cucumber>, ["~> 1.0"])
@@ -125,7 +134,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, ["~> 1.6"])
     else
       s.add_dependency(%q<lolita>, ["~> 3.2.0.rc.6"])
-      s.add_dependency(%q<carrierwave>, ["~> 0.5.8"])
+      s.add_dependency(%q<carrierwave>, ["~> 0.6.0"])
       s.add_dependency(%q<mini_magick>, [">= 0"])
       s.add_dependency(%q<jquery-rails>, [">= 1.0.12"])
       s.add_dependency(%q<cucumber>, ["~> 1.0"])
@@ -135,7 +144,7 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<lolita>, ["~> 3.2.0.rc.6"])
-    s.add_dependency(%q<carrierwave>, ["~> 0.5.8"])
+    s.add_dependency(%q<carrierwave>, ["~> 0.6.0"])
     s.add_dependency(%q<mini_magick>, [">= 0"])
     s.add_dependency(%q<jquery-rails>, [">= 1.0.12"])
     s.add_dependency(%q<cucumber>, ["~> 1.0"])

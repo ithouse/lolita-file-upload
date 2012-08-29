@@ -8,6 +8,10 @@ class FileUploader < CarrierWave::Uploader::Base
       process :resize_to_fit => [600,600]
     end
 
+    version :preview, :if => :image? do 
+      process :resize_to_limit => [100,100]
+    end
+
     def timestamp
       time=if model
         model.created_at || Time.now
