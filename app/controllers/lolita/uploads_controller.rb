@@ -25,7 +25,8 @@ class Lolita::UploadsController < ApplicationController
 
   def update
     authorization_proxy.can?(:update,@file.class)
-    @file.update_attributes!(params[:file])
+    @file.update_attributes!(params[resource_param_name])
+    flash[:notice] = ::I18n.t("lolita.uploads_controller.update.notice")
     render_component *@tab.build("",:update,:file=>@file)
   end
 
@@ -39,7 +40,7 @@ class Lolita::UploadsController < ApplicationController
 
   def set_resource
     association_id = params["#{lolita_mapping.singular}_id"] || params[:upload]["#{lolita_mapping.singular}_id"] || params[:upload]["#{@tab.association.options[:as]}_id"]
-    self.resource = resource_class.find_by_id(association_id)
+    self.resource = resource_class.find_by_id(association_id) || resource_class.new
   end
 
   def build_file
@@ -61,5 +62,9 @@ class Lolita::UploadsController < ApplicationController
 
   def tab_by_association name
     resource_class.lolita.tabs.detect{|tab| tab.type == :files && (tab.try(:association) && tab.association.name == name.to_sym)}
+  end
+
+  def resource_param_name
+    @file.class.to_s.underscore.gsub("/","_")
   end
 end

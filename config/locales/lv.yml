@@ -1,5 +1,23 @@
 lv:
   lolita:
+    uploads_controller:
+      update:
+        notice: "Faila informācija veiksmīgi saglabāta"
+        error: "Faila informācija netika saglabāta"
+    support:
+      bytes:
+        byte:
+          one: baits
+          other: baiti
+        kilobyte:
+          one: kilobaits
+          other: kilobaiti
+        megabyte:
+          one: megabaits
+          other: megabaiti
+        gigabyte:
+          one: gigabaits
+          other: gigabaiti
     upload:
       errors:
         "file too big": "fails par lielu (maksimums %{value} %{unit})"

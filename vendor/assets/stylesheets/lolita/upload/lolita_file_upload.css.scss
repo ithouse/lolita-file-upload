@@ -41,6 +41,8 @@
   -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
 }
+#main #content .box .edit-file-form .file-editor .notice {text-align: right; margin-bottom: 10px; color: green}
+#main #content .box .edit-file-form .file-editor .error {text-align: right; margin-bottom: 10px; color: red}
 #main #content .box .edit-file-form .file-editor .editable-image {width: 35%; float: left;}
 #main #content .box .edit-file-form .file-editor .fields {width: 60%; float: right;}
 #main #content .box .edit-file-form .file-editor .fields label {width: 20%; display: inline-block;}

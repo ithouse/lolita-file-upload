@@ -7,7 +7,7 @@ module Lolita
     	class Files < Lolita::Configuration::Tab::Base
     	
   	  	lolita_accessor :extensions, :maxfilesize, :filters
-        attr_reader :association, :uploader, :association_type, :editable_fields
+        attr_reader :association, :uploader, :association_type
 
         # As any other Lolita::Configuration::Tab this should receive _dbi_ object.
         # Additional _args_ that may represent methods, for details see Lolita::Configuration::Tab.
@@ -17,7 +17,6 @@ module Lolita
           @dissociate = true
   	  		@filters=[]
           @dbi=dbi
-          @editable_fields=[]
           set_default_association
   	  		super
   	  	end
@@ -59,9 +58,27 @@ module Lolita
           Lolita::DBI::Base.new self.association.klass
         end
 
-        def editable_fields *names
-          @editable_fields = names unless names.empty?
-          @editable_fields.empty? ? all_text_fields : @editable_fields
+        def field *args, &block
+          if association
+            field = Lolita::Configuration::Factory::Field.add(association_dbi,*args,&block)
+            @fields << field
+            field
+          end
+        end
+
+        def default_fields
+          if association
+            association_dbi.fields.each{|db_field|
+              self.field(:name => db_field.name, :type => db_field.type, :dbi_field => db_field) if db_field.content?
+            }
+          end
+        end
+
+        def editable_fields
+          if association
+            self.default_fields if self.fields.empty?
+            self.fields
+          end
         end
 
         def extension_white_list

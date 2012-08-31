@@ -48,6 +48,11 @@ if defined?(Rails)
  require "lolita-file-upload/rails"
 end
 
+Lolita.after_setup do 
+  Lolita.application.assets << "lolita/upload/application_vendor.css"
+  Lolita.application.assets <<  "lolita/upload/application_vendor.js"
+end
+
 # How to connect multimedia engine with lolita resources
 # Detecting from tabs will not be very good idea because it will load many thing 
 # There should be the way to connect it on demand when realy multimedia tab is used for resource like

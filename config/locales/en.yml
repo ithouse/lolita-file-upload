@@ -1,5 +1,9 @@
 en:
   lolita:
+    uploads_controller:
+      update:
+        notice: "File information successfuly saved"
+        error: "File information not saved"
     upload:
       errors:
         "file too big": "file too big (max %{value} %{unit})"
