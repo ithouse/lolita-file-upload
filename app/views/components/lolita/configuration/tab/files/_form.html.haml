@@ -1,0 +1,27 @@
+- old_current_form = self.current_form
+= form_for file, :url => send(:"lolita_#{resource_class.model_name.singular}_upload_path", "#{resource_class.model_name.singular}_id" => (resource.nil? || resource.new_record?) ? 0 : resource.id, :association => tab.association.name, :id=>file.id), :html => {:method=>:put,:remote=>true,:id=>"edit_#{tab.association.name}_#{file.id}", :class => "edit-file-form"} do |f|
+  - self.current_form = f
+  .file-editor
+    - unless flash[:notice].blank?
+      %p.notice= flash[:notice]
+    - unless flash[:error].blank?
+      %p.error= flash[:error]
+    - url = file.send(tab.uploader).normalized.blank? ? file.send(tab.uploader).url : file.send(tab.uploader).normalized.url
+    = image_tag url, :class => "editable-image"
+    - if file.class.respond_to?(:translations_configuration)
+      = render_component :"/lolita/configuration/tab/files", :language_switch, :tab => tab
+    .fields 
+      - if file.class.respond_to?(:translations_configuration)
+        = render_component :"/lolita/configuration/tab/files", :translatable_fields, :tab => tab, :file => file
+      - else
+        = render_component :"/lolita/configuration/tab/files", :fields, :tab => tab, :file => file
+    %br
+    .action-links
+      .navigation
+        = link_to t("lolita.tabs.images.back"), send(:"lolita_#{tab.dbi.klass.model_name.singular}_uploads_path"), :remote => true, :class => "back"
+        - #= link_to t("lolita.tabs.images.previous"), "#", :class => "previous" 
+        - #= link_to t("lolita.tabs.images.next"), "#", :class => "next" 
+      .actions
+        = link_to t("lolita.tabs.images.delete"), send(:"lolita_#{tab.dbi.klass.model_name.singular}_upload_path", "#{tab.dbi.klass.model_name.singular}_id" => (resource.nil? || resource.new_record?) ? 0 : resource.id, :association => tab.association.name, :id=>file.id),:method=>:delete,:remote=>true,:confirm=>"Are you sure?", :class => "delete"
+        = link_to t("lolita.tabs.images.save"), "#", :class => "save"
+- self.current_form = old_current_form

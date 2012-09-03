@@ -1,0 +1,10 @@
+.language-wrap{ :id => "#{file.original_locale}_for_file_edit_form", :class => "active"}
+  - tab.editable_fields.each do |field|
+    = render_component "lolita/configuration/field", :display, :field => field 
+- nested_form = tab.build_translations_nested_form(file)
+- main_form = self.current_form
+= self.current_form.fields_for nested_form.name, file.send(nested_form.build_method) do |n_form|
+  - self.current_form = n_form
+  .language-wrap{ :id => "#{n_form.object.locale}_for_file_edit_form"}
+    = render_component nested_form, :fields 
+- self.current_form = main_form

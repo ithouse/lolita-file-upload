@@ -1,0 +1,3 @@
+%ul{:class => "tab-language-switch", :id => "#{tab.name}_language_switch"}
+  - resource.translations_configuration.locales.by_resource_locale(resource).each do |locale|
+    %li{ :class => resource.original_locale.to_s == locale.name.to_s && "active" || "", :"data-locale" => locale.short_name, :"data-tab" => "file_edit_form", :"data-container" => ".edit-file-form"}= locale.humanized_short_name
