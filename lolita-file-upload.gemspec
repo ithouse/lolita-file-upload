@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "lolita-file-upload"
-  s.version = "0.5.0"
+  s.version = "0.6.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ITHouse", "Arturs Meisters"]
-  s.date = "2012-08-29"
+  s.date = "2012-09-03"
   s.description = "File upload gem for Lolita with with fulll integration - models, controller, views"
   s.email = "support@ithouse.lv"
   s.extra_rdoc_files = [
@@ -40,14 +40,17 @@ Gem::Specification.new do |s|
     "app/views/components/lolita/configuration/tab/files/_destroy.js.erb",
     "app/views/components/lolita/configuration/tab/files/_display.html.erb",
     "app/views/components/lolita/configuration/tab/files/_edit.js.erb",
+    "app/views/components/lolita/configuration/tab/files/_fields.html.haml",
     "app/views/components/lolita/configuration/tab/files/_file.html.erb",
     "app/views/components/lolita/configuration/tab/files/_fixed_gallery.html.haml",
-    "app/views/components/lolita/configuration/tab/files/_form.html.erb",
+    "app/views/components/lolita/configuration/tab/files/_form.html.haml",
     "app/views/components/lolita/configuration/tab/files/_image.html.erb",
+    "app/views/components/lolita/configuration/tab/files/_language_switch.html.haml",
     "app/views/components/lolita/configuration/tab/files/_list.html.erb",
     "app/views/components/lolita/configuration/tab/files/_list.js.erb",
     "app/views/components/lolita/configuration/tab/files/_list_form.html.erb",
     "app/views/components/lolita/configuration/tab/files/_row.html.erb",
+    "app/views/components/lolita/configuration/tab/files/_translatable_fields.html.haml",
     "app/views/components/lolita/configuration/tab/files/_update.js.erb",
     "app/views/components/lolita/configuration/tab/files/_upload_script.html.erb",
     "config/locales/en.yml",
