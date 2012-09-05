@@ -1,4 +1,11 @@
 lv:
+  components:
+    lolita:
+      configuration:
+        tab:
+          files:
+          fixed_gallery:
+            close: Aizvērt
   lolita:
     uploads_controller:
       update:
