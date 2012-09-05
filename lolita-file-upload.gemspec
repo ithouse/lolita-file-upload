@@ -122,7 +122,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/ithouse/lolita-file-upload"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.17"
+  s.rubygems_version = "1.8.24"
   s.summary = "File upload gem for Lolita CMS"
 
   if s.respond_to? :specification_version then
