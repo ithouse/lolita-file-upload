@@ -5,7 +5,7 @@ class FileUploader < CarrierWave::Uploader::Base
     after :remove, :delete_empty_upstream_dirs
 
     version :normalized, :if => :image? do
-      process :resize_to_fit => [600,600]
+      process :resize_to_limit => [1024,768]
     end
 
     version :preview, :if => :image? do 
