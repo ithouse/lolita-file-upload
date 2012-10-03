@@ -7,6 +7,8 @@ en:
     upload:
       errors:
         "file too big": "file too big (max %{value} %{unit})"
+      gallery:
+        close: "Close"
     tabs:
       titles:
         files: "Files"

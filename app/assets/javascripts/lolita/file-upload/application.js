@@ -1,0 +1,1 @@
+//= require lolita/file-upload/gallery

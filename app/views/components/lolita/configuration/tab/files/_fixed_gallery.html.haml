@@ -1,32 +1,14 @@
-:css
-  #fixed-gallery {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    border-bottom: 4px solid #CCC;
-    background-color: white;
-    z-index: 200001;
-    width: 100%;
-    display: block;
-    border-bottom: 4px solid #CCC;
-    -moz-box-shadow: #666 2px 2px 15px;
-    -webkit-box-shadow: #666 2px 2px 15px;
-    box-shadow: #666 2px 2px 15px;
-    display:none;
-    overflow: auto;
-  }
-  #fixed-gallery button{
-    position: fixed;
-    right: 35px;
-    z-index: 200001;
-  }
-
-%div{:id=>"fixed-gallery"}
-  - resource_class.lolita.tabs.select{|tab| tab.type == :files}.each do |tab|
-    %h1= tab.title
-    / - files = tab.association_type == :one ? [resource.send(tab.association.name)].compact :  resource.send(tab.association.name)
-    / - files.each do |file|
-    /   - if file.send(tab.uploader).to_s =~ /(jpg|jpeg|png|gif)$/i 
-    /     - url = file.send(tab.uploader).normalized.blank? ? file.send(tab.uploader).url : file.send(tab.uploader).normalized.url
-    /     = #image_tag(url)
-  %button{:onclick=>"$('#fixed-gallery').hide();"}Aizvērt
+#fixed-gallery
+  .slider.es-carousel-wrapper
+    .es-carousel
+      %ul
+  %div.close.ui-state-default.ui-corner-all
+    %span.ui-icon.ui-icon-closethick
+    
+:javascript
+  $(function(){
+    LolitaFileUploadGallery.buttonTitle = '#{t('lolita.tinymce.gallery')}'
+    LolitaFileUploadGallery.buttonImage = '#{asset_path('lolita/tinymce_gallery.png')}'
+    LolitaFileUploadGallery.get().init()
+  })
+  

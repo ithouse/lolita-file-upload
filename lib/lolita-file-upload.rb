@@ -33,15 +33,6 @@ Lolita::Hooks.component(:"/lolita/configuration/tab/form").around do
   end
 end
 
-Lolita::Hooks.component(:"/lolita/configuration/field/string/text/display").around do
-  field = self.component_locals[:field]
-  if field.dbi.klass.lolita.tabs.by_type(:files)
-    self.render_component "lolita/configuration/field/string/text_gallery", :display, :field => field
-  else
-    let_content
-  end
-end
-
 require 'lolita-file-upload/module'
 
 if defined?(Rails)
@@ -49,8 +40,10 @@ if defined?(Rails)
 end
 
 Lolita.after_setup do 
-  Lolita.application.assets << "lolita/upload/application_vendor.css"
-  Lolita.application.assets <<  "lolita/upload/application_vendor.js"
+  Lolita.application.assets << "lolita/file-upload/application_vendor.css"
+  Lolita.application.assets <<  "lolita/file-upload/application_vendor.js"
+  Lolita.application.assets <<  "lolita/file-upload/application.css"
+  Lolita.application.assets <<  "lolita/file-upload/application.js"
 end
 
 # How to connect multimedia engine with lolita resources

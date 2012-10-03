@@ -1,0 +1,26 @@
+#fixed-gallery {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  border-bottom: 4px solid #CCC;
+  background-color: #e9e9e9;
+  z-index: 100;
+  width: 100%;
+  border-bottom: 4px solid #CCC;
+  -moz-box-shadow: #666 2px 2px 15px;
+  -webkit-box-shadow: #666 2px 2px 15px;
+  box-shadow: #666 2px 2px 15px;
+  display:none;
+  overflow: hidden;
+  height: 120px;
+}
+#fixed-gallery .close{
+  z-index: 100;
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  margin: 2px;
+  width: 16px;
+  padding: 4px;
+  cursor: pointer;
+}

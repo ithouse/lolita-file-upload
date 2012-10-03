@@ -1,5 +1,5 @@
   <% unless ::I18n.locale.to_s.downcase=="en" %>
-  <%= javascript_include_tag "lolita/upload/I18n/#{Lolita.locale}.js"%>
+  <%= javascript_include_tag "lolita/file-upload/I18n/#{Lolita.locale}.js"%>
 <% end %>
 <script type="text/javascript">  
  $(function(){  
@@ -40,7 +40,7 @@
     },
 
     // Flash settings
-    flash_swf_url : "<%=asset_path("lolita/upload/plupload.flash.swf")%>",
+    flash_swf_url : "<%=asset_path("lolita/file-upload/plupload.flash.swf")%>",
     init:{
       FileUploaded:function(uploader, file, info){
         <% if tab.association_type == :many %>

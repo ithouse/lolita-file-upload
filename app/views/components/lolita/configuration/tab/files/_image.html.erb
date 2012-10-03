@@ -16,7 +16,9 @@
   <p><%= File.basename(file.send(tab.uploader).url) %></p>
 </div>
 <script>
-  $('#fixed-gallery').append("<%=escape_javascript(render_component(*tab.build("",:file,:file=>file,:format=>"html")))%>");
+  <% if file.send(tab.uploader).preview %>
+    LolitaFileUploadGallery.get().add('<%= file.send(tab.uploader).preview.url %>', '<%= file.send(tab.uploader).url %>')
+  <% end %>
   <% if tab.association_type == :many
       ids = "#{resource_name}[#{tab.association.name.to_s.singularize}_ids][]"
     else
