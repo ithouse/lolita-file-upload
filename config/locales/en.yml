@@ -1,4 +1,11 @@
 en:
+  components:
+    lolita:
+      configuration:
+        tab:
+          files:
+          fixed_gallery:
+            close: Close
   lolita:
     uploads_controller:
       update:
