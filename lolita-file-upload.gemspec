@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "lolita-file-upload"
-  s.version = "0.6.2"
+  s.version = "0.7.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ITHouse", "Arturs Meisters"]
-  s.date = "2012-09-05"
+  s.date = "2012-10-03"
   s.description = "File upload gem for Lolita with with fulll integration - models, controller, views"
   s.email = "support@ithouse.lv"
   s.extra_rdoc_files = [
@@ -24,18 +24,22 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "app/assets/images/lolita/file-upload/back.png",
+    "app/assets/images/lolita/file-upload/delete.png",
+    "app/assets/images/lolita/file-upload/edit.png",
+    "app/assets/images/lolita/file-upload/next.png",
+    "app/assets/images/lolita/file-upload/prev.png",
+    "app/assets/images/lolita/file-upload/save.png",
     "app/assets/images/lolita/tinymce_gallery.png",
-    "app/assets/images/lolita/upload/back.png",
-    "app/assets/images/lolita/upload/delete.png",
-    "app/assets/images/lolita/upload/edit.png",
-    "app/assets/images/lolita/upload/next.png",
-    "app/assets/images/lolita/upload/prev.png",
-    "app/assets/images/lolita/upload/save.png",
+    "app/assets/javascripts/lolita/file-upload/application.js",
+    "app/assets/javascripts/lolita/file-upload/gallery.js.coffee",
+    "app/assets/stylesheets/lolita/file-upload/application.css",
+    "app/assets/stylesheets/lolita/file-upload/gallery.css",
+    "app/assets/stylesheets/lolita/file-upload/uploader.css",
     "app/controllers/lolita/uploads_controller.rb",
     "app/models/lolita/upload/file.rb",
     "app/uploaders/file_uploader.rb",
     "app/views/components/lolita/configuration/field/file/_display.html.haml",
-    "app/views/components/lolita/configuration/field/string/text_gallery/_display.html.haml",
     "app/views/components/lolita/configuration/tab/files/_cells.html.erb",
     "app/views/components/lolita/configuration/tab/files/_destroy.js.erb",
     "app/views/components/lolita/configuration/tab/files/_display.html.erb",
@@ -98,26 +102,30 @@ Gem::Specification.new do |s|
     "test_orm/support.rb",
     "test_orm/uploaders/list_image_uploader.rb",
     "test_orm/uploaders/main_image_uploader.rb",
-    "vendor/assets/images/lolita/upload/plupload/backgrounds.gif",
-    "vendor/assets/images/lolita/upload/plupload/buttons-disabled.png",
-    "vendor/assets/images/lolita/upload/plupload/buttons.png",
-    "vendor/assets/images/lolita/upload/plupload/delete.gif",
-    "vendor/assets/images/lolita/upload/plupload/done.gif",
-    "vendor/assets/images/lolita/upload/plupload/error.gif",
-    "vendor/assets/images/lolita/upload/plupload/plupload-bw.png",
-    "vendor/assets/images/lolita/upload/plupload/plupload.png",
-    "vendor/assets/images/lolita/upload/plupload/throbber.gif",
-    "vendor/assets/images/lolita/upload/plupload/transp50.png",
-    "vendor/assets/javascripts/lolita/upload/I18n/lv.js",
-    "vendor/assets/javascripts/lolita/upload/I18n/ru.js",
-    "vendor/assets/javascripts/lolita/upload/application_vendor.js",
-    "vendor/assets/javascripts/lolita/upload/jquery.ui.plupload.js",
-    "vendor/assets/javascripts/lolita/upload/plupload.flash.swf",
-    "vendor/assets/javascripts/lolita/upload/plupload.full.js",
-    "vendor/assets/stylesheets/lolita/upload/application_vendor.css",
-    "vendor/assets/stylesheets/lolita/upload/jquery.ui.plupload.css.erb",
-    "vendor/assets/stylesheets/lolita/upload/lolita_file_upload.css.scss",
-    "vendor/assets/stylesheets/lolita/upload/plupload.queue.css"
+    "vendor/assets/images/lolita/file-upload/elastislide/nav.png",
+    "vendor/assets/images/lolita/file-upload/elastislide/pattern.png",
+    "vendor/assets/images/lolita/file-upload/plupload/backgrounds.gif",
+    "vendor/assets/images/lolita/file-upload/plupload/buttons-disabled.png",
+    "vendor/assets/images/lolita/file-upload/plupload/buttons.png",
+    "vendor/assets/images/lolita/file-upload/plupload/delete.gif",
+    "vendor/assets/images/lolita/file-upload/plupload/done.gif",
+    "vendor/assets/images/lolita/file-upload/plupload/error.gif",
+    "vendor/assets/images/lolita/file-upload/plupload/plupload-bw.png",
+    "vendor/assets/images/lolita/file-upload/plupload/plupload.png",
+    "vendor/assets/images/lolita/file-upload/plupload/throbber.gif",
+    "vendor/assets/images/lolita/file-upload/plupload/transp50.png",
+    "vendor/assets/javascripts/lolita/file-upload/I18n/lv.js",
+    "vendor/assets/javascripts/lolita/file-upload/I18n/ru.js",
+    "vendor/assets/javascripts/lolita/file-upload/application_vendor.js",
+    "vendor/assets/javascripts/lolita/file-upload/jquery.easing.1.3.js",
+    "vendor/assets/javascripts/lolita/file-upload/jquery.elastislide.js",
+    "vendor/assets/javascripts/lolita/file-upload/jquery.ui.plupload.js",
+    "vendor/assets/javascripts/lolita/file-upload/plupload.flash.swf",
+    "vendor/assets/javascripts/lolita/file-upload/plupload.full.js",
+    "vendor/assets/stylesheets/lolita/file-upload/application_vendor.css",
+    "vendor/assets/stylesheets/lolita/file-upload/elastislide.css.erb",
+    "vendor/assets/stylesheets/lolita/file-upload/jquery.ui.plupload.css.erb",
+    "vendor/assets/stylesheets/lolita/file-upload/plupload.queue.css"
   ]
   s.homepage = "http://github.com/ithouse/lolita-file-upload"
   s.licenses = ["MIT"]
