@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "lolita-file-upload"
-  s.version = "0.7.0"
+  s.version = "0.7.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ITHouse", "Arturs Meisters"]
-  s.date = "2012-10-03"
+  s.date = "2012-10-04"
   s.description = "File upload gem for Lolita with with fulll integration - models, controller, views"
   s.email = "support@ithouse.lv"
   s.extra_rdoc_files = [
@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
     "app/assets/javascripts/lolita/file-upload/gallery.js.coffee",
     "app/assets/stylesheets/lolita/file-upload/application.css",
     "app/assets/stylesheets/lolita/file-upload/gallery.css",
-    "app/assets/stylesheets/lolita/file-upload/uploader.css",
+    "app/assets/stylesheets/lolita/file-upload/uploader.css.erb",
     "app/controllers/lolita/uploads_controller.rb",
     "app/models/lolita/upload/file.rb",
     "app/uploaders/file_uploader.rb",
