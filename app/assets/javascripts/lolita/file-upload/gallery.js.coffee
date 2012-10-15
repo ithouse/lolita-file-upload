@@ -161,6 +161,6 @@ class LolitaFileUploadGallery
     "<img src='" + imagePath + "' alt='" + imagePath + "' />"
   
   _insertableFileTag:  (filePath) ->
-    "<a href='" + filePath + "'>" + @_getFileBasename(filePath) + "</a>"
+    "<a class='file-icon' href='" + filePath + "'><img src='" + @_getFileIcon(filePath) + "' /><span>" + @_getFileBasename(filePath) + "</span></a>"
 
 window.LolitaFileUploadGallery = LolitaFileUploadGallery
