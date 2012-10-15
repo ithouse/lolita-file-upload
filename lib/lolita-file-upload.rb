@@ -9,6 +9,18 @@ I18n.load_path += Dir[File.expand_path("config/locales")+"/**/*.yml"] if defined
 
 module Lolita
   module FileUpload
+    class << self
+      def get_available_file_icons
+        @available_file_icons ||= {}.tap do |results|
+          Dir.entries(::File.dirname(__FILE__) + "/../app/assets/images/lolita/file-icons").each do |item|
+            if ::File.extname(item) == '.png'
+              results[::File.basename(item, '.png')] =
+                ActionController::Base.helpers.asset_path(::File.join('lolita/file-icons', ::File.basename(item)))
+            end
+          end
+        end
+      end
+    end
   end
   module Support
     autoload :Bytes, "support/bytes"

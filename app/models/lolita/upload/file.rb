@@ -9,7 +9,7 @@ module Lolita
       #validate :size_limit FIXME to work with more than one tab
       before_save :set_metadata
       #before_create :singularize_files
-      
+
 
       private
 
