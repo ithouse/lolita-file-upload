@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "lolita-file-upload"
-  s.version = "0.7.1"
+  s.version = "0.7.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ITHouse", "Arturs Meisters"]
-  s.date = "2012-10-04"
+  s.date = "2012-11-12"
   s.description = "File upload gem for Lolita with with fulll integration - models, controller, views"
   s.email = "support@ithouse.lv"
   s.extra_rdoc_files = [
@@ -24,6 +24,39 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "app/assets/images/lolita/file-icons/asf.png",
+    "app/assets/images/lolita/file-icons/avi.png",
+    "app/assets/images/lolita/file-icons/bin.png",
+    "app/assets/images/lolita/file-icons/doc.png",
+    "app/assets/images/lolita/file-icons/docx.png",
+    "app/assets/images/lolita/file-icons/dvd.png",
+    "app/assets/images/lolita/file-icons/fon.png",
+    "app/assets/images/lolita/file-icons/html.png",
+    "app/assets/images/lolita/file-icons/ini.png",
+    "app/assets/images/lolita/file-icons/m4a.png",
+    "app/assets/images/lolita/file-icons/mov.png",
+    "app/assets/images/lolita/file-icons/mp2.png",
+    "app/assets/images/lolita/file-icons/mp3.png",
+    "app/assets/images/lolita/file-icons/mp4.png",
+    "app/assets/images/lolita/file-icons/mpeg.png",
+    "app/assets/images/lolita/file-icons/pdf.png",
+    "app/assets/images/lolita/file-icons/ppt.png",
+    "app/assets/images/lolita/file-icons/pptx.png",
+    "app/assets/images/lolita/file-icons/psd.png",
+    "app/assets/images/lolita/file-icons/rar.png",
+    "app/assets/images/lolita/file-icons/rtf.png",
+    "app/assets/images/lolita/file-icons/torrent.png",
+    "app/assets/images/lolita/file-icons/ttf.png",
+    "app/assets/images/lolita/file-icons/txt.png",
+    "app/assets/images/lolita/file-icons/unknown.png",
+    "app/assets/images/lolita/file-icons/wma.png",
+    "app/assets/images/lolita/file-icons/wmv.png",
+    "app/assets/images/lolita/file-icons/wri.png",
+    "app/assets/images/lolita/file-icons/xls.png",
+    "app/assets/images/lolita/file-icons/xlsx.png",
+    "app/assets/images/lolita/file-icons/xml.png",
+    "app/assets/images/lolita/file-icons/xsl.png",
+    "app/assets/images/lolita/file-icons/zip.png",
     "app/assets/images/lolita/file-upload/back.png",
     "app/assets/images/lolita/file-upload/delete.png",
     "app/assets/images/lolita/file-upload/edit.png",
