@@ -106,7 +106,7 @@ class LolitaFileUploadGallery
       LolitaFileUploadGallery.availableFileIcons['unknown']
 
   _getFileBasename: (filePath) ->
-    return filePath.replace(/\\/g,'/').replace( /.*\//, '' );
+    filePath.replace(/\\/g, "/").replace( /.*\//, '' );
 
   _tape: ->
     $(TAPE_SELECTOR)
