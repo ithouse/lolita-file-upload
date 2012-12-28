@@ -6,6 +6,9 @@ lv:
           files:
           fixed_gallery:
             close: Aizvērt
+        field:
+          file:
+            remove_current_upload: "Nodzēst failu?"
   lolita:
     uploads_controller:
       update:

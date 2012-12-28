@@ -6,6 +6,9 @@ en:
           files:
           fixed_gallery:
             close: Close
+        field:
+          file:
+            remove_current_upload: "Remove current file?"
   lolita:
     uploads_controller:
       update:
