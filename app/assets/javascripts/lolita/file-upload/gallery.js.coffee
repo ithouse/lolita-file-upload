@@ -53,9 +53,15 @@ class LolitaFileUploadGallery
       margin: 5
     })
 
+  _image_and_icon: ->
+    $(IMAGE_SELECTOR + ',' + FILE_ICON_SELECTOR)
+
   _makeImagesDraggable: ->
-    $(IMAGE_SELECTOR + ',' + FILE_ICON_SELECTOR).draggable("destroy")
-    $(IMAGE_SELECTOR + ',' + FILE_ICON_SELECTOR).draggable({
+    @_image_and_icon().each(->
+      if $(this).is('.ui-draggable')
+        $(this).draggable("destroy")
+    )
+    @_image_and_icon().draggable({
       appendTo: "body"
       zIndex: 20000
       helper: "clone"
