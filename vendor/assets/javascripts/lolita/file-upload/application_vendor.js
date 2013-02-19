@@ -1,4 +1,3 @@
-//= require jquery-ui
 //= require lolita/file-upload/plupload.full
 //= require lolita/file-upload/jquery.ui.plupload
 //= require lolita/file-upload/jquery.easing.1.3
