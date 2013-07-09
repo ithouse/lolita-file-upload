@@ -5,3 +5,8 @@ DEPRECATION WARNING: human_name has been deprecated, please use model_name.human
 DEPRECATION WARNING: human_name has been deprecated, please use model_name.human instead. (called from block in <top (required)> at /home/kungs/a_work/ruby_docs/lolita-file-upload/test_orm/rails/config/routes.rb:2)
 DEPRECATION WARNING: human_name has been deprecated, please use model_name.human instead. (called from block in <top (required)> at /home/kungs/a_work/ruby_docs/lolita-file-upload/test_orm/rails/config/routes.rb:2)
 DEPRECATION WARNING: human_name has been deprecated, please use model_name.human instead. (called from block in <top (required)> at /home/kungs/a_work/ruby_docs/lolita-file-upload/test_orm/rails/config/routes.rb:2)
+DEPRECATION WARNING: Factory.create is deprecated; use FactoryGirl.create instead. (called from block (3 levels) in <top (required)> at /home/gatis/Code/ruby/lolita-file-upload/spec/models/file_spec.rb:24)
+DEPRECATION WARNING: Factory.create is deprecated; use FactoryGirl.create instead. (called from block (3 levels) in <top (required)> at /home/gatis/Code/ruby/lolita-file-upload/spec/models/file_spec.rb:24)
+DEPRECATION WARNING: Factory.create is deprecated; use FactoryGirl.create instead. (called from block (3 levels) in <top (required)> at /home/gatis/Code/ruby/lolita-file-upload/spec/models/file_spec.rb:24)
+DEPRECATION WARNING: Factory.create is deprecated; use FactoryGirl.create instead. (called from block (3 levels) in <top (required)> at /home/gatis/Code/ruby/lolita-file-upload/spec/models/file_spec.rb:24)
+DEPRECATION WARNING: Factory.create is deprecated; use FactoryGirl.create instead. (called from block (3 levels) in <top (required)> at /home/gatis/Code/ruby/lolita-file-upload/spec/models/file_spec.rb:24)

@@ -1,5 +1,5 @@
 class News < ActiveRecord::Base
-  set_table_name "lolita_news"
+  self.table_name = "lolita_news"
   include Lolita::Configuration
   has_many :tags
 

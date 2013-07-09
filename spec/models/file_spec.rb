@@ -19,16 +19,4 @@ describe Lolita::Upload::File do
       end
   end
 
-  context "configuration" do
-    it "should get from parent model lolita file tab" do
-      post=Factory.create(:post)
-      Post.lolita.tabs.clear # remove all tabs
-      file_tab=tab
-      file_tab.maxfilesize=5
-      Post.lolita.tabs << file_tab
-      normal_file.fileable=post
-      normal_file.save
-      normal_file.errors[:asset].should == ["file too big (max #{5.0} bytes)"]
-    end
-  end
 end

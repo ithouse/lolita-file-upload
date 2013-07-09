@@ -12,13 +12,13 @@ module Lolita
         # As any other Lolita::Configuration::Tab this should receive _dbi_ object.
         # Additional _args_ that may represent methods, for details see Lolita::Configuration::Tab.
         # And block.
-  	  	def initialize(dbi,*args,&block)
+  	  	def initialize(dbi, *args, &block)
           @type=:files
           @dissociate = true
   	  		@filters=[]
           @dbi=dbi
           set_default_association
-  	  		super
+  	  		super(dbi, @type, *args, &block)
   	  	end
 
         # NOTE: Filters only limit frontend, backend limit is set in Uploader

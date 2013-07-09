@@ -15,7 +15,7 @@ module Support
 
     def load_rails_application
       require 'rails'
-      require 'lolita/rails/all'
+      require 'lolita'
       require 'lolita-file-upload/rails'
       require File.expand_path("test_orm/rails/config/enviroment")
     end
