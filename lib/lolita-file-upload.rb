@@ -3,7 +3,7 @@
 if !defined?(Lolita)
   require "lolita" 
 end
-$:<<File.dirname(__FILE__) unless $:.include?(File.dirname(__FILE__))
+$: << File.dirname(__FILE__) unless $:.include?(File.dirname(__FILE__))
 
 I18n.load_path += Dir[File.expand_path("config/locales")+"/**/*.yml"] if defined?(I18n)
 
