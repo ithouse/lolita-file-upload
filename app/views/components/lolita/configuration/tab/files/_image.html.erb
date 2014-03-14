@@ -16,6 +16,7 @@
   <p><%= File.basename(file.send(tab.uploader).url) %></p>
 </div>
 <script>
+  $(function(){
   LolitaFileUploadGallery.get().add('<%= file.send(tab.uploader).preview ? file.send(tab.uploader).preview.url : '' %>', '<%= file.send(tab.uploader).url %>')
   <% if tab.association_type == :many
       ids = "#{resource_name}[#{tab.association.name.to_s.singularize}_ids][]"
@@ -25,5 +26,5 @@
   <% if resource && resource.new_record? && resource.errors.any? %>
     $(".tabs form:first").append('<input type="hidden" class="<%=tab.association.name%>-ids" name="<%= ids %>" value="<%= file.id %>" />')
   <% end %>
-
+  });
 </script>
