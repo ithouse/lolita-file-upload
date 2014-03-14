@@ -1,4 +1,4 @@
-class LolitaFileUploadGallery
+class window.LolitaFileUploadGallery
   @_instance: null
   _initialized: false
   _imageQueue: []
@@ -20,11 +20,9 @@ class LolitaFileUploadGallery
     @_instance
 
   init: ->
-    @_observeImageDropping()
     @_createSlider()
     @_addImagesToDOM()
     @_observeCloseButton()
-    @_addButtonToTinyMCE()
     @._initialized = true
 
   toggle: ->
@@ -40,11 +38,6 @@ class LolitaFileUploadGallery
       @_addToDOM($fileContainer)
     else
       @_addToQueue($fileContainer)
-
-  _observeImageDropping: ->
-    tinyMCE.onAddEditor.add( (mgr, editor) =>
-      @_observeDropOnTinyMCEEditor(editor)
-    )
 
   _createSlider: ->
     @_slider().elastislide({
@@ -71,7 +64,7 @@ class LolitaFileUploadGallery
   _addImagesToDOM: ->
     while image = @._imageQueue.shift()
       @_addToDOM(image)
-  
+
   _observeCloseButton: ->
     $(CLOSE_BUTTON_SELECTOR).mouseenter(->
       $(this).addClass("ui-state-hover")
@@ -81,16 +74,12 @@ class LolitaFileUploadGallery
       @_gallery().hide()
     )
 
-  _addButtonToTinyMCE: ->
-    TinyMCEConfigManager.get().config.addAfter("buttons", "gallery", "image")
-    TinyMCEConfigManager.get().config.addFunction("setup", (editor) ->
-      editor.addButton("gallery", {
-        title: LolitaFileUploadGallery.buttonTitle
-        image: LolitaFileUploadGallery.buttonImage
-        onclick: ->
-         LolitaFileUploadGallery.get().toggle()
-      })
-    )
+  _addButtonToTinyMCE: (editor) ->
+    editor.addButton "gallery",
+      title: LolitaFileUploadGallery.buttonTitle
+      image: LolitaFileUploadGallery.buttonImage
+      onclick: ->
+        LolitaFileUploadGallery.get().toggle()
 
   _gallery: ->
     $(GALLERY_SELECTOR)
@@ -145,13 +134,12 @@ class LolitaFileUploadGallery
 
   _observeDropOnTinyMCEEditor: (newEditor) ->
     self = this
-    newEditor.onInit.add( (editor) ->
+    newEditor.on "init", (editor) ->
       $(editor.contentDocument).ready ->
         self._editorContainer(editor).droppable({
           drop: (event, ui) =>
             editor.selection.setContent(self._insertableTag(ui.draggable))
         })
-    )
 
   _editorContainer: (editor) ->
     $("#" + editor.editorContainer).find(".mceIframeContainer")
@@ -165,8 +153,6 @@ class LolitaFileUploadGallery
 
   _insertableImageTag: (imagePath) ->
     "<img src='" + imagePath + "' alt='" + imagePath + "' />"
-  
+
   _insertableFileTag:  (filePath) ->
     "<a class='file-icon' href='" + filePath + "'><img src='" + @_getFileIcon(filePath) + "' /><span>" + @_getFileBasename(filePath) + "</span></a>"
-
-window.LolitaFileUploadGallery = LolitaFileUploadGallery

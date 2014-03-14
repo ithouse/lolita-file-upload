@@ -18,6 +18,8 @@ en:
       errors:
         "file too big": "file too big (max %{value} %{unit})"
       gallery:
+        tinymce:
+          button_text: "Gallery"
         close: "Close"
     tabs:
       titles:

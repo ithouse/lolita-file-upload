@@ -1,6 +1,8 @@
 <tr id="upload_<%=tab.association.name%>_row_<%=file.id%>" data-<%=tab.association.name%>-id="<%=file.id%>">
   <%= render_component *tab.build("",:cells,:file=>file) %>
   <script>
-    LolitaFileUploadGallery.get().add('<%= file.send(tab.uploader).preview ? file.send(tab.uploader).preview.url : '' %>', '<%= file.send(tab.uploader).url %>)
+    $(function(){
+      LolitaFileUploadGallery.get().add('<%= file.send(tab.uploader).preview ? file.send(tab.uploader).preview.url : '' %>', '<%= file.send(tab.uploader).url %>)
+    });
   </script>
 </tr>

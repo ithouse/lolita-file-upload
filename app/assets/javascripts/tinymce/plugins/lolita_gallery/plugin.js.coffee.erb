@@ -1,0 +1,14 @@
+tinymce.PluginManager.add "lolita_gallery", (editor, url) ->
+
+  # Add a button that opens a window
+  editor.addButton "lolita_gallery",
+    text: "<%= I18n.t("lolita.upload.gallery.tinymce.button_text") %>"
+    icon: "image"
+    onclick: -> window.LolitaFileUploadGallery.get().toggle()
+
+  # Adds a menu item to the tools menu
+  editor.addMenuItem "lolita_gallery",
+    text: "<%= I18n.t("lolita.upload.gallery.tinymce.button_text") %>"
+    icon: "image"
+    context: "tools"
+    onclick: -> window.LolitaFileUploadGallery.get().toggle()
