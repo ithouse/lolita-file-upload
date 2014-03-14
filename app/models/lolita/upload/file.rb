@@ -2,7 +2,6 @@ module Lolita
   module Upload
     class File < ActiveRecord::Base
       self.table_name = 'lolita_files'
-      attr_accessible :asset, :name, :fileable_type, :asset_extension
       mount_uploader :asset, FileUploader
       belongs_to :fileable, polymorphic: true
       before_save :set_metadata
