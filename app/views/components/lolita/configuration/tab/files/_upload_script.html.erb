@@ -1,4 +1,4 @@
-  <% unless ::I18n.locale.to_s.downcase=="en" %>
+<% if %w(lv ru).include?(::I18n.locale.to_s.downcase) %>
   <%= javascript_include_tag "lolita/file-upload/I18n/#{Lolita.locale}.js"%>
 <% end %>
 <script type="text/javascript">  
