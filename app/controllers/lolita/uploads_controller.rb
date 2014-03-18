@@ -25,7 +25,7 @@ class Lolita::UploadsController < ApplicationController
 
   def update
     authorization_proxy.can?(:update,@file.class)
-    @file.update_attributes!(resource_params)
+    @file.update_attributes!(resource_params(@file))
     flash[:notice] = ::I18n.t("lolita.uploads_controller.update.notice")
     render_component *@tab.build("",:update,:file=>@file)
   end
@@ -68,7 +68,11 @@ class Lolita::UploadsController < ApplicationController
     @file.class.to_s.underscore.gsub("/","_")
   end
 
-  def resource_params
-    params.require(resource_param_name).permit(:asset, :name, :fileable_type, :asset_extension)
+  def resource_params(resource)
+    params.require(resource_param_name).permit(*get_resource_columns(resource))
+  end
+
+  def get_resource_columns(resource)
+    resource.class.column_names.map { |name| name.to_sym }
   end
 end
