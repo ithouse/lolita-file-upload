@@ -6,4 +6,4 @@
     = content_tag(:div, class: 'remove_checkbox') do
       = current_form.check_box "remove_#{field.name}"
       = current_form.label "remove_#{field.name}", I18n.t("components.lolita.configuration.field.file.remove_current_upload")
-= tag(:div, class: 'clear')
+= content_tag(:div, "", class: 'clear')
