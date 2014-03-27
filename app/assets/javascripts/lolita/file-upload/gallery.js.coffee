@@ -88,7 +88,7 @@ class window.LolitaFileUploadGallery
     $(SLIDER_SELECTOR)
 
   _isImagePath: (filePath) ->
-    filePath.match(/\.(jpg|jpeg|gif|png|ico)$/)
+    filePath.match(/\.(jpg|jpeg|gif|png|ico)$/i)
 
   _getFileExtension: (filePath) ->
     filePath.substr(filePath.lastIndexOf('.') + 1)
