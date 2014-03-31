@@ -49,18 +49,6 @@ class window.LolitaFileUploadGallery
   _image_and_icon: ->
     $(IMAGE_SELECTOR + ',' + FILE_ICON_SELECTOR)
 
-  _makeImagesDraggable: ->
-    @_image_and_icon().each(->
-      if $(this).is('.ui-draggable')
-        $(this).draggable("destroy")
-    )
-    @_image_and_icon().draggable({
-      appendTo: "body"
-      zIndex: 20000
-      helper: "clone"
-      cursor: "move"
-    })
-
   _addImagesToDOM: ->
     while image = @._imageQueue.shift()
       @_addToDOM(image)
@@ -127,7 +115,6 @@ class window.LolitaFileUploadGallery
   _addToDOM: ($imageContainer) ->
     @_tape().append($imageContainer)
     @_slider().elastislide("add", $imageContainer)
-    @_makeImagesDraggable()
 
   _addToQueue: ($imageContainer) ->
     @._imageQueue.push($imageContainer)
