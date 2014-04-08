@@ -20,10 +20,16 @@ class window.LolitaFileUploadGallery
     @_instance
 
   init: ->
+    @_observeImageDropping()
     @_createSlider()
     @_addImagesToDOM()
     @_observeCloseButton()
     @._initialized = true
+
+  _observeImageDropping: ->
+    tinyMCE.on "AddEditor", (e) =>
+      @_observeDropOnTinyMCEEditor(e.editor)
+
 
   toggle: ->
     @_gallery().toggle()
@@ -48,6 +54,18 @@ class window.LolitaFileUploadGallery
 
   _image_and_icon: ->
     $(IMAGE_SELECTOR + ',' + FILE_ICON_SELECTOR)
+
+  _makeImagesDraggable: ->
+    @_image_and_icon().each(->
+      if $(this).is('.ui-draggable')
+        $(this).draggable("destroy")
+    )
+    @_image_and_icon().draggable({
+      appendTo: "body"
+      zIndex: 20000
+      helper: "clone"
+      cursor: "move"
+    })
 
   _addImagesToDOM: ->
     while image = @._imageQueue.shift()
@@ -89,7 +107,7 @@ class window.LolitaFileUploadGallery
       LolitaFileUploadGallery.availableFileIcons['unknown']
 
   _getFileBasename: (filePath) ->
-    filePath.replace(/\\/g, "/").replace( /.*\//, '' );
+    filePath.replace(/\\/g, "/").replace( /.*\//, '' )
 
   _tape: ->
     $(TAPE_SELECTOR)
@@ -102,37 +120,37 @@ class window.LolitaFileUploadGallery
     )
 
   _imageTag: (imagePath, originalImagePath) ->
-    $('<img>').attr({src: imagePath, alt: imagePath}).data('original-url', originalImagePath)
+    $('<img>').attr({src: imagePath, alt: imagePath}).attr('data-original-url', originalImagePath)
 
   _fileContainer: (filePath, originalFilePath) ->
     $('<li>').html( 
       $('<a>').attr('href', '#').addClass('file').html( 
         $('<img>').attr({src: @_getFileIcon(originalFilePath), title: @_getFileBasename(originalFilePath)})
-        .data('original-url', originalFilePath)
+        .attr('data-original-url', originalFilePath)
       )
     )
 
   _addToDOM: ($imageContainer) ->
     @_tape().append($imageContainer)
     @_slider().elastislide("add", $imageContainer)
+    @_makeImagesDraggable()
 
   _addToQueue: ($imageContainer) ->
     @._imageQueue.push($imageContainer)
 
   _observeDropOnTinyMCEEditor: (newEditor) ->
     self = this
-    newEditor.on "init", (editor) ->
-      $(editor.contentDocument).ready ->
-        self._editorContainer(editor).droppable({
-          drop: (event, ui) =>
-            editor.selection.setContent(self._insertableTag(ui.draggable))
-        })
+    newEditor.on "LoadContent", (e) ->
+      $(e.target.getContainer()).droppable({
+        drop: (event, ui) =>
+          e.target.selection.setContent(self._insertableTag(ui.draggable))
+      })
 
   _editorContainer: (editor) ->
     $("#" + editor.editorContainer).find(".mceIframeContainer")
 
   _insertableTag: (draggable) ->
-    filePath = draggable.data("original-url")
+    filePath = draggable.attr("data-original-url")
     if @_isImagePath(filePath)
       @_insertableImageTag(filePath)
     else
