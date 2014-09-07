@@ -1,0 +1,49 @@
+sv_SE:
+  components:
+    lolita:
+      configuration:
+        tab:
+          files:
+          fixed_gallery:
+            close: Close
+        field:
+          file:
+            remove_current_upload: "Remove current file?"
+  lolita:
+    uploads_controller:
+      update:
+        notice: "File information successfuly saved"
+        error: "File information not saved"
+    upload:
+      errors:
+        "file too big": "file too big (max %{value} %{unit})"
+      gallery:
+        tinymce:
+          button_text: "Gallery"
+        close: "Close"
+    tabs:
+      titles:
+        files: "Files"
+      images:
+        edit: "Edit"
+        delete: "Delete"
+        back: "Back"
+        previous: "Previous"
+        next: "Next"
+        save: "Save"
+    support:
+      bytes:
+        byte:
+          one: byte
+          other: bytes
+        kilobyte:
+          one: kilobyte
+          other: kilobytes
+        megabyte:
+          one: megabyte
+          other: megabytes
+        gigabyte:
+          one: gigabyte
+          other: gigabytes
+    tinymce:
+      gallery: Gallery
