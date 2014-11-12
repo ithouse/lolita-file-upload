@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lolita-file-upload (0.8.3)
+    lolita-file-upload (1.0.0)
       carrierwave (~> 0.6.0)
       lolita (~> 3.2)
       mini_magick (~> 3.6.0)
