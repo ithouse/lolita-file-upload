@@ -27,8 +27,12 @@ class window.LolitaFileUploadGallery
     @._initialized = true
 
   _observeImageDropping: ->
-    tinyMCE.on "AddEditor", (e) =>
-      @_observeDropOnTinyMCEEditor(e.editor)
+    if typeof tinyMCE.onAddEditor == 'object' && typeof tinyMCE.onAddEditor.add == 'function'
+      tinyMCE.onAddEditor.add (e) =>
+        @_observeDropOnTinyMCEEditor(e.editor)
+    else
+      tinyMCE.on "AddEditor", (e) =>
+        @_observeDropOnTinyMCEEditor(e.editor)
 
 
   toggle: ->
@@ -123,8 +127,8 @@ class window.LolitaFileUploadGallery
     $('<img>').attr({src: imagePath, alt: imagePath}).attr('data-original-url', originalImagePath)
 
   _fileContainer: (filePath, originalFilePath) ->
-    $('<li>').html( 
-      $('<a>').attr('href', '#').addClass('file').html( 
+    $('<li>').html(
+      $('<a>').attr('href', '#').addClass('file').html(
         $('<img>').attr({src: @_getFileIcon(originalFilePath), title: @_getFileBasename(originalFilePath)})
         .attr('data-original-url', originalFilePath)
       )
@@ -142,7 +146,7 @@ class window.LolitaFileUploadGallery
     self = this
     newEditor.on "LoadContent", (e) ->
       $(e.target.getContainer()).droppable({
-        drop: (event, ui) =>
+        drop: (event, ui) ->
           e.target.selection.setContent(self._insertableTag(ui.draggable))
       })
 
