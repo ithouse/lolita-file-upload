@@ -24,12 +24,14 @@ class window.LolitaFileUploadGallery
     @_createSlider()
     @_addImagesToDOM()
     @_observeCloseButton()
+    if tinyMCE.majorVersion == '3'
+      @_addButtonToTinyMCEversion3()
     @._initialized = true
 
   _observeImageDropping: ->
-    if typeof tinyMCE.onAddEditor == 'object' && typeof tinyMCE.onAddEditor.add == 'function'
-      tinyMCE.onAddEditor.add (e) =>
-        @_observeDropOnTinyMCEEditor(e.editor)
+    if tinyMCE.majorVersion == '3'
+      tinyMCE.onAddEditor.add (manager, editor) =>
+        @_observeDropOnTinyMCEEditor(editor)
     else
       tinyMCE.on "AddEditor", (e) =>
         @_observeDropOnTinyMCEEditor(e.editor)
@@ -82,6 +84,17 @@ class window.LolitaFileUploadGallery
       $(this).removeClass("ui-state-hover")
     ).click(=>
       @_gallery().hide()
+    )
+
+  _addButtonToTinyMCEversion3: ->
+    TinyMCEConfigManager.get().config.addAfter("buttons", "gallery", "image")
+    TinyMCEConfigManager.get().config.addFunction("setup", (editor) ->
+      editor.addButton("gallery", {
+        title: window.LolitaFileUploadGallery.buttonTitle
+        image: window.LolitaFileUploadGallery.buttonImage
+        onclick: ->
+          window.LolitaFileUploadGallery.get().toggle()
+      })
     )
 
   _addButtonToTinyMCE: (editor) ->
@@ -144,11 +157,19 @@ class window.LolitaFileUploadGallery
 
   _observeDropOnTinyMCEEditor: (newEditor) ->
     self = this
-    newEditor.on "LoadContent", (e) ->
-      $(e.target.getContainer()).droppable({
-        drop: (event, ui) ->
-          e.target.selection.setContent(self._insertableTag(ui.draggable))
-      })
+    if tinyMCE.majorVersion == '3'
+      newEditor.onInit.add (editor) ->
+        $(editor.contentDocument).ready ->
+          self._editorContainer(editor).droppable({
+            drop: (event, ui) ->
+              editor.selection.setContent(self._insertableTag(ui.draggable))
+          })
+    else
+      newEditor.on "LoadContent", (e) ->
+        $(e.target.getContainer()).droppable({
+          drop: (event, ui) ->
+            e.target.selection.setContent(self._insertableTag(ui.draggable))
+        })
 
   _editorContainer: (editor) ->
     $("#" + editor.editorContainer).find(".mceIframeContainer")
