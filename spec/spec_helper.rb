@@ -3,7 +3,7 @@ require "rails"
 require "lolita"
 
 unless ENV['CI']
-  require 'byebug'
+  require 'pry-byebug'
 end
 
 require File.expand_path('test_orm/support')

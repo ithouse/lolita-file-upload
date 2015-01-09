@@ -47,3 +47,5 @@ pkg
 #
 # For vim:
 *.swp
+log/development.log
+log/development.lo
