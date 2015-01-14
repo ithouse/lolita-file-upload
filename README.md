@@ -9,9 +9,8 @@ File upload gem for Lolita.
 * cd your_project_path
 * rails g lolita_file_upload:install
 * add `lolita_gallery` as plugin to `config/tinymce.yml` configuration.
-
-Install will copy migration to your project.
-If you update to newest version of gem, than run `rails g lolita_file_upload:assets`
+* run `bundle exec rails g lolita:file_upload:install` it will create new migration file
+* run `bundle exec rake db:migrate db:test:clone` to create file tables
 
 ##Configuration
 
