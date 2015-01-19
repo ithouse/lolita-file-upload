@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
     "README.md"
   ]
   s.licenses = ["MIT"]
-  s.add_runtime_dependency(%q<lolita>, ["~> 3.2"])
+  #s.add_runtime_dependency(%q<lolita>, ["~> 4.0.4"])
   s.add_runtime_dependency(%q<carrierwave>, ["~> 0.6.0"])
   s.add_runtime_dependency(%q<mini_magick>, ["~> 3.6.0"])
   s.files         = `git ls-files`.split("\n")
