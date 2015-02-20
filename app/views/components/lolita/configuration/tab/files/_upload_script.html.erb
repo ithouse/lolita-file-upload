@@ -53,6 +53,8 @@
 
         <% if tab.association_type == :many %>
           var ids="<%="#{resource_name}[#{tab.association.name.to_s.singularize}_ids][]"%>"
+        <% else %>
+          var ids = "<%="#{resource_name}[#{tab.association.name.to_s.singularize}_new]"%>"
         <% end %>
 
         var existing_ids=[]
@@ -66,11 +68,10 @@
             new_ids.push($(this).attr("data-<%=tab.association.name%>-id"))
           }
         })
-        <% if tab.association_type == :many %>
         for(var i in new_ids){
           $(".tabs form:first").append('<input type="hidden" class="<%=tab.association.name%>-ids" name="'+ids+'" value="'+new_ids[i]+'" />')
         }
-        <% end %>
+
       }  
     },
     
