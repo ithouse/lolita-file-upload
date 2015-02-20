@@ -66,10 +66,11 @@
             new_ids.push($(this).attr("data-<%=tab.association.name%>-id"))
           }
         })
+        <% if tab.association_type == :many %>
         for(var i in new_ids){
           $(".tabs form:first").append('<input type="hidden" class="<%=tab.association.name%>-ids" name="'+ids+'" value="'+new_ids[i]+'" />')
         }
-
+        <% end %>
       }  
     },
     
