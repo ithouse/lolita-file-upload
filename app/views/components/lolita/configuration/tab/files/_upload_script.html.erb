@@ -53,8 +53,6 @@
 
         <% if tab.association_type == :many %>
           var ids="<%="#{resource_name}[#{tab.association.name.to_s.singularize}_ids][]"%>"
-        <% else %>
-          var ids = "<%="#{resource_name}[#{tab.association.name.to_s.singularize}_new]"%>"
         <% end %>
 
         var existing_ids=[]
