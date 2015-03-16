@@ -5,7 +5,9 @@
       <%= image_tag url %>
     <% else %>
       <% ext = File.extname(file.send(tab.uploader).url).gsub(/^\./,"") %>
-      <%= image_tag Lolita::FileUpload.get_available_file_icons[ext] %>
+      <% icons = Lolita::FileUpload.get_available_file_icons %>
+      <% icon = icons[ext] ? icons[ext] : icons['unknown'] %>
+      <%= image_tag icon %>
       <%= file.send(tab.uploader).url %>
     <% end %>
     <div class="links">
