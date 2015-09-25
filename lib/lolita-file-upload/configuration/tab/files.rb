@@ -47,7 +47,7 @@ module Lolita
 
         def association name=nil
           if name
-            @association = self.dbi.associations[name]
+            @association = self.dbi.associations[name.to_s]
             @association_type = @association.macro
             @uploader = @association.klass.uploaders.keys.first
           end
