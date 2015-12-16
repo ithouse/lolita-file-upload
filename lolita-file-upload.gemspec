@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "lolita-file-upload"
-  s.version     = "1.0.4"
+  s.version     = "1.0.5"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["ITHouse (Latvia)", "Arturs Meisters", "Gatis Tomsons"]
   s.description = "File upload gem for Lolita with with fulll integration - models, controller, views"
