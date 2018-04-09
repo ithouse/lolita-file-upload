@@ -1,9 +1,9 @@
 class Lolita::UploadsController < ApplicationController
   include Lolita::ControllerAdditions
-  before_filter :authenticate_lolita_user!
-  before_filter :set_tab, :only=>[:index,:edit,:update,:destroy,:create]
-  before_filter :set_resource, :only=>[:create,:edit,:update,:destroy]
-  before_filter :set_file, :only=>[:edit,:update,:destroy,:create]
+  before_action :authenticate_lolita_user!
+  before_action :set_tab, :only=>[:index,:edit,:update,:destroy,:create]
+  before_action :set_resource, :only=>[:create,:edit,:update,:destroy]
+  before_action :set_file, :only=>[:edit,:update,:destroy,:create]
 
   respond_to :js,:html
 
