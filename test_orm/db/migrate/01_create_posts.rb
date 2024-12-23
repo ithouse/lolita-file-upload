@@ -1,4 +1,4 @@
-class CreatePosts < ActiveRecord::Migration
+class CreatePosts < ActiveRecord::Migration[4.2]
 
   class << self
     def up

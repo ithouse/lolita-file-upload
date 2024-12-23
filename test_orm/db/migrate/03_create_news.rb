@@ -1,4 +1,4 @@
-class CreateNews < ActiveRecord::Migration
+class CreateNews < ActiveRecord::Migration[4.2]
   class << self
     
     def up

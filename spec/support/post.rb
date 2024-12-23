@@ -1,5 +1,5 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :post do
-    title Faker::Lorem::words(3)
+    title { Faker::Lorem::words(3) }
   end
 end

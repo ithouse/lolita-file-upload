@@ -1,4 +1,4 @@
-class CreateTags < ActiveRecord::Migration
+class CreateTags < ActiveRecord::Migration[4.2]
   class << self
     
     def up

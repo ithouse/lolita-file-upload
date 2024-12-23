@@ -1,2 +1,3 @@
 adapter: sqlite3
 database: ":memory:"
+migrations_paths: "test_orm/db/migrate"

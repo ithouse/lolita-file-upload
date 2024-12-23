@@ -23,7 +23,7 @@ module Lolita
 
         # NOTE: Filters only limit frontend, backend limit is set in Uploader
         #
-        # Add another filter or just title for uploader's extension_white_list
+        # Add another filter or just title for uploader's extension_allowlist
         # ====Example
         #     # using in lolita configuration definition
         #     lolita do
@@ -35,10 +35,10 @@ module Lolita
         #       end
         #     end
         #     
-  	  	def filters(title=nil, extensions=nil)
-  	  		@filters << {:title => title, :extensions => extensions || self.extension_white_list} if title
-          (@filters.empty? && self.extension_white_list) ? [{:title => self.title, :extensions => self.extension_white_list}] : @filters
-  	  	end
+        def filters(title=nil, extensions=nil)
+          @filters << {:title => title, :extensions => extensions || self.extension_allowlist} if title
+          (@filters.empty? && self.extension_allowlist) ? [{:title => self.title, :extensions => self.extension_allowlist}] : @filters
+        end
 
         def uploader name=nil
           @uploader = name.to_sym if name
@@ -81,8 +81,8 @@ module Lolita
           end
         end
 
-        def extension_white_list
-          self.association.klass.uploaders[self.uploader].new.extension_white_list
+        def extension_allowlist
+          self.association.klass.uploaders[self.uploader].new.extension_allowlist
         end
 
         private
