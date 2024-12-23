@@ -17,7 +17,7 @@ GIT
 PATH
   remote: .
   specs:
-    lolita-file-upload (1.0.6)
+    lolita-file-upload (1.0.8)
       carrierwave (~> 2.2)
       lolita (>= 4.5)
       mini_magick (~> 4.10)
@@ -244,7 +244,6 @@ DEPENDENCIES
   rails (~> 5.2)
   rspec
   rspec-rails (~> 3.7)
-  sprockets (~> 4.2)
   sqlite3
 
 BUNDLED WITH
