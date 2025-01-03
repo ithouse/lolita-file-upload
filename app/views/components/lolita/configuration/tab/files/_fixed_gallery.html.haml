@@ -6,7 +6,7 @@
     %span.ui-icon.ui-icon-closethick
 
 :javascript
-  LolitaFileUploadGallery.availableFileIcons = #{Lolita::FileUpload.get_available_file_icons.to_json}
+  LolitaFileUploadGallery.availableFileIcons = #{raw Lolita::FileUpload.get_available_file_icons.to_json}
   LolitaFileUploadGallery.buttonTitle = '#{t('lolita.tinymce.gallery')}'
   LolitaFileUploadGallery.buttonImage = '#{asset_path('lolita/tinymce_gallery.png')}'
   LolitaFileUploadGallery.get().init()
